@@ -30,26 +30,15 @@ body {
     color: var(--main-color);
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 form>label {
     color: var(--main-color);
 }
 
 form>input {
     background-color: var(--second-color);
-    display: flex;
+    color: var(--main-color);
     border: 0;
     border-radius: 20px;
-    color: var(--main-color);
-    width: 350px;
-    height: 50px;
-    font-size: 50px;
-    padding: 0 20px;
 }
 
 form>input:focus {
@@ -57,10 +46,16 @@ form>input:focus {
     transition: .1s;
 }
 
-
+.logo{
+    filter: invert(1);
+    -webkit-filter: invert(1);
+}
 
 /* Laptop */
 @media screen and (min-width: 1024px) {
+
+
+    
 
     /* LOGIN */
 
@@ -79,6 +74,21 @@ form>input:focus {
     .loginContainer>p {
         font-size: 75px;
         font-weight: bold;
+    }
+
+    /* Formulario */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    form>input {
+        display: flex;
+        width: 350px;
+        height: 50px;
+        font-size: 50px;
+        padding: 0 20px;
     }
 
     /* Mensaje de Error */
@@ -138,6 +148,9 @@ form>input:focus {
         border: 2px solid var(--main-color);
     }
 
+    .logo{
+
+    }
 
 }
 
