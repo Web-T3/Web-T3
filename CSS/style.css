@@ -9,6 +9,7 @@
     --second-color: #2B4F71;
     --object-color: #657A97;
     --text-color: #E9EDF8;
+    --dark-blue-color: #264664;
     font-family: 'WorkSansR';
 }
 
@@ -23,6 +24,10 @@ body {
     justify-content: center;
 }
 
+a{
+    text-decoration: none;
+}
+
 
 /* LOGIN  */
 .loginContainer {
@@ -30,18 +35,25 @@ body {
     color: var(--main-color);
 }
 
-form>label {
+.registerContainer {
+    background-color: var(--second-color);
     color: var(--main-color);
 }
 
-form>input {
+form label {
+    color: var(--main-color);
+}
+
+form input {
     background-color: var(--second-color);
     color: var(--main-color);
     border: 0;
+    /* background-color: var(--dark-blue-color); */
+    filter: drop-shadow(3px 1px 4px var(--dark-blue-color));
     border-radius: 20px;
 }
 
-form>input:focus {
+form input:focus {
     outline: 3px solid var(--main-color);
     transition: .1s;
 }
@@ -51,11 +63,18 @@ form>input:focus {
     -webkit-filter: invert(1);
 }
 
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
 /* Laptop */
 @media screen and (min-width: 1024px) {
-
-
-    
 
     /* LOGIN */
 
@@ -71,7 +90,7 @@ form>input:focus {
     }
 
     /* Parrafos dentro del contenedor */
-    .loginContainer>p {
+    .titulo {
         font-size: 75px;
         font-weight: bold;
     }
@@ -82,8 +101,8 @@ form>input:focus {
         flex-direction: column;
         gap: 20px;
     }
-    
-    form>input {
+
+    form input {
         display: flex;
         width: 350px;
         height: 50px;
@@ -92,7 +111,7 @@ form>input:focus {
     }
 
     /* Mensaje de Error */
-    #error{
+    #error {
         color: var(--text-color);
         margin-left: 25px;
     }
@@ -148,8 +167,80 @@ form>input:focus {
         border: 2px solid var(--main-color);
     }
 
-    .logo{
+    /* REGISTER */
 
+    /* Contenedor */
+    .registerContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 75px;
+        width: 1250px;
+        height: 600px;
+        border-radius: 20px;
+    }
+
+    .column{
+        display: flex;
+        gap: 10px;
+    }
+
+    .row{
+        display: flex;
+        gap: 10px;
+    }
+
+    /* Parrafos dentro del contenedor */
+    .registerContainer>p {
+        font-size: 75px;
+        font-weight: bold;
+    }
+
+    .logo{
+        width: 20rem;
+        height: 20rem;
+        margin-top: 150px;
+    }
+
+    #btnLogin {
+        background-color: transparent;
+        color: var(--text-color);
+        width: 150px;
+        height: 50px;
+        border: 2px solid var(--main-color);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 17px;
+        padding-top: 15px;
+    }
+
+    #btnLogin:hover {
+        background-color: var(--main-color);
+        color: var(--second-color);
+        border: none;
+        border-radius: 20px;
+    }
+
+    #btnRegister {
+        background-color: var(--main-color);
+        color: var(--second-color);
+        width: 150px;
+        height: 50px;
+        border: none;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 17px;
+        padding-top: 15px;
+    }
+
+    #btnRegister:hover {
+        background-color: var(--second-color);
+        color: var(--main-color);
+        border: 2px solid var(--main-color);
     }
 
 }
