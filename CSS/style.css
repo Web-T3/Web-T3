@@ -10,7 +10,15 @@
     --object-color: #657A97;
     --text-color: #E9EDF8;
     --dark-blue-color: #264664;
+    --black-color: #191919;
+    --white-color: white;
     font-family: 'WorkSansR';
+    margin: 0;
+    padding: 0;
+    background-image: url(../Multimedia/bg_image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 *::selection {
@@ -22,9 +30,11 @@ body {
     background-color: var(--main-color);
     display: flex;
     justify-content: center;
+    background-color: var(--black-color);
+    color: var(--white-color);
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -58,17 +68,17 @@ form input:focus {
     transition: .1s;
 }
 
-.logo{
+.logo {
     filter: invert(1);
     -webkit-filter: invert(1);
 }
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
 }
@@ -180,12 +190,12 @@ form input:focus {
         border-radius: 20px;
     }
 
-    .column{
+    .column {
         display: flex;
         gap: 10px;
     }
 
-    .row{
+    .row {
         display: flex;
         gap: 10px;
     }
@@ -196,7 +206,7 @@ form input:focus {
         font-weight: bold;
     }
 
-    .logo{
+    .logo {
         width: 20rem;
         height: 20rem;
         margin-top: 150px;
@@ -242,6 +252,52 @@ form input:focus {
         color: var(--main-color);
         border: 2px solid var(--main-color);
     }
+
+
+    /* PAGINA PRINCIPAL */
+
+    .bodyIndex{
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header */
+    /* header {
+        background-color: var(--main-color);
+        color: var(--second-color);
+        width: 100%;
+        height: 100%;
+        max-width: 1920px;
+        min-width: 1024px;
+        max-height: 75px;
+        min-height: 50px;
+    } */
+
+
+    /* Container */
+    .containerIndex{
+        background-color: var(--main-color);
+        color: var(--second-color);
+        width: 75%;
+        height: 100%;
+        max-width: 1920px;
+        min-width: 1024px;
+        max-height: 7500px;
+        min-height: 5000px;
+    }
+
+
+    /* Footer */
+    /* footer{
+        background-color: var(--main-color);
+        color: var(--second-color);
+        width: 100%;
+        height: 100%;
+        max-width: 1920px;
+        min-width: 1024px;
+        max-height: 75px;
+        min-height: 50px;
+    } */
 
 }
 
