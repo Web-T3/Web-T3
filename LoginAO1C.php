@@ -30,35 +30,48 @@
             // aldagaiak
             $hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
             $nombreDB = 'e1webgune';
-            $usuarioDB = 'LeyreBoyra';
+            $usuarioDB = 'admin';
             $contrasenyaDB = 'NausicaA';
             // Datu basearekin konektatu
             $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
             $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
             if($pass == $passc){
+                echo "<a>hola1</a>";
             // Preparatu INSERT
-            $miInsert = $miPDO->prepare('INSERT INTO Usuarios (nickname, nombre, apellido, contraseña, edad, rol, grupo, lib_leido) VALUES (:nick, :name, :surname, :pass, :age, :rol, :group, :rbook)');
+            // Preparatu INSERT
+            // $miInsert = $miPDO->prepare('INSERT INTO Usuarios (nickname, nombre, apellido, contraseina, edad, rol, imagen, grupo, lib_leido) VALUES (:nickname, :nombre, :apellido, :contraseina, :edad, :rol, :imagen, :grupo, :lib_leido)');
+            $miInsert = $miPDO->prepare('SELECT * FROM Usuarios WHERE nickname = :nickname');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
-                        array(
-                            'nickname' => $titulo,
-                            'nombre' => $name,
-                            'apellido' => $surname,
-                            'contraseña' => $pass,
-                            'edad' => $age,
-                            'rol' => $rol,
-                            'grupo' => $group,
-                            'lib_leido' => $rbook
-                            )
+            // array(
+            //     'nickname' => $nick,
+            //     'nombre' => $name,
+            //     'apellido' => $surname,
+            //     'contraseina' => $pass,
+            //     'edad' => $age,
+            //     'rol' => $rol,
+            //     'imagen' => "20",
+            //     'grupo' => "1",
+            //     'lib_leido' => "Harry Potter"
+            // )
+            [
+                'nickname' => "Richard11"
+            ]
             );
+            echo "<a>hola3</a>";
+            $datuak = $miInsert->fetch();
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
-            session_start();
-            $_SESSION['nickname'] = $_REQUEST['nickname'];
+            // session_start();
+            // $_SESSION['nickname'] = $_REQUEST['nickname'];
             // Orrialde segurura bidaltzen dugu
-            header('Location: index.html');
-            die();
+            // header('Location: index.html');
+            // die();
+            echo "<a>".$datuak['nickname']."</a>";
             }else{
-                echo '<div class="error"><b>Las contraseñas no coinciden.</b></div>';
+                echo '
+                <script>
+                document.getElementById("ERROR").innerHTML = "ERROR: Pasahitzak ez dira berdinak.";
+                </script>';
             }
             
             }
@@ -66,7 +79,7 @@
 
                 // Aldagaia hauek datu basetik irakurriko ditugu
                 $zerbitzaria = "wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com";
-                $erabiltzailea ="LeyreBoyra";
+                $erabiltzailea ="admin";
                 $pasahitza = "NausicaA";
                 $datubasea = "e1webgune";
 
@@ -99,7 +112,9 @@
                         die();
                     } else {
                         // Datuak zuzenak ez badira, erabiltzaileari jakinarazi
-                        echo '<div class="error"><b>Usuario o contraseña no validos.</b></div>';
+                        echo '<script>
+                        document.getElementById("ERROR").innerHTML = "ERROR: Nickname edo pasahitza ez dira berdinak.";
+                        </script>';
                     }
                         
                     }
@@ -120,7 +135,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form method="post" name="R" id="R" action="">
+				<form method="post" name="R" id="R" action="" onsubmit="return return()">
 					<label for="chk" aria-hidden="true">Registrarse</label>
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
 					<input type="text" name="name" placeholder="Nombre" required="">
@@ -128,7 +143,8 @@
                     <input type="text" name="age" placeholder="Edad" required="">
 					<input type="password" name="pswdr" placeholder="Contraseña" required="">
                     <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
-					<button type="submit" name="register" value="Submit">Registrarse</button>
+					<p id="ERROR"></p>
+                    <button type="submit" name="register" value="Submit">Registrarse</button>
 				</form>
 			</div>
 
@@ -142,5 +158,12 @@
 				</form>
 			</div>
 	</div>
+    <script>
+        var return = () => {
+            return(false);
+        }
+
+        var 
+    </script>
     </body>
 </html>
