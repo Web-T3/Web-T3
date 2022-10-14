@@ -26,7 +26,7 @@ $nireKonts->execute();
 <body>
     <table>
         <tr>
-            <th>nicnkame</th>
+            <th>nickname</th>
             <th>nombre</th>
             <th>apellido</th>
             <th>contraseña</th>

@@ -36,37 +36,30 @@
             $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
             $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
             if($pass == $passc){
-                echo "<a>hola1</a>";
             // Preparatu INSERT
-            // Preparatu INSERT
-            // $miInsert = $miPDO->prepare('INSERT INTO Usuarios (nickname, nombre, apellido, contraseina, edad, rol, imagen, grupo, lib_leido) VALUES (:nickname, :nombre, :apellido, :contraseina, :edad, :rol, :imagen, :grupo, :lib_leido)');
-            $miInsert = $miPDO->prepare('SELECT * FROM Usuarios WHERE nickname = :nickname');
+            
+            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`nickname`, `nombre`, `apellido`, `contraseña`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
-            // array(
-            //     'nickname' => $nick,
-            //     'nombre' => $name,
-            //     'apellido' => $surname,
-            //     'contraseina' => $pass,
-            //     'edad' => $age,
-            //     'rol' => $rol,
-            //     'imagen' => "20",
-            //     'grupo' => "1",
-            //     'lib_leido' => "Harry Potter"
-            // )
-            [
-                'nickname' => "Richard11"
-            ]
+            array(
+                'nickname' => $nick,
+                'nombre' => $name,
+                'apellido' => $surname,
+                'contrasenya' => $pass,
+                'edad' => $age,
+                'rol' => $rol,
+                'grupo' => $group,
+                'lib_leido' => $rbook
+            )
             );
             echo "<a>hola3</a>";
             $datuak = $miInsert->fetch();
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
-            // session_start();
-            // $_SESSION['nickname'] = $_REQUEST['nickname'];
+            session_start();
+            $_SESSION['nickname'] = $_REQUEST['nickname'];
             // Orrialde segurura bidaltzen dugu
-            // header('Location: index.html');
-            // die();
-            echo "<a>".$datuak['nickname']."</a>";
+            header('Location: index.html');
+            die();
             }else{
                 echo '
                 <script>
