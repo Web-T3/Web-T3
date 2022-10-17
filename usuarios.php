@@ -28,12 +28,12 @@ $nireKonts->execute();
         <tr>
             <th>Mail</th>
             <th>Nickname</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Contraseña</th>
-            <th>Edad</th>
-            <th>Rol</th>
-            <th>Grupo</th>
+            <th>Izena</th>
+            <th>Abizena</th>
+            <th>Pasahitza</th>
+            <th>Adina</th>
+            <th>Rola</th>
+            <th>Taldea</th>
             <th>Lib. Irakurrita</th>
             <td></td>
             <td></td>
@@ -44,7 +44,7 @@ $nireKonts->execute();
            <td><?= $balorea['nickname']; ?></td>
            <td><?= $balorea['nombre']; ?></td>
            <td><?= $balorea['apellido']; ?></td>
-           <td><?= $balorea['contraseña']; ?></td>
+           <td><?= $balorea['contrasenya']; ?></td>
            <td><?= $balorea['edad']; ?></td>
            <td><?= $balorea['rol']; ?></td>
            <td><?= $balorea['grupo']; ?></td>

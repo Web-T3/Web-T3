@@ -39,7 +39,7 @@
             if($pass == $passc){
             // Preparatu INSERT
             
-            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contraseña`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
+            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
             array(
@@ -87,7 +87,7 @@
                     // ezarri PDO exception modura
                     $konexioa->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // sql 
-                    $sql = "SELECT contraseña FROM Usuarios WHERE nickname= '$izena' ";
+                    $sql = "SELECT contrasenya FROM Usuarios WHERE nickname= '$izena' ";
                     $emaitza = $konexioa->query($sql);
                     $datuak = $emaitza->fetchAll();
                     if(!isset($datuak)){
@@ -95,7 +95,7 @@
                     } 
                     else {
                         error_reporting(0);
-                        $pasahitzZuzena = $datuak[0]['contraseña'];
+                        $pasahitzZuzena = $datuak[0]['contrasenya'];
                         // Sartutako datuak zuzenak diren egiaztatu
                     if ($pasahitzZuzena == $pasahitz) {
                         // Zuzenak badira, saioa hasiko dugu sartutako datuekin
@@ -130,16 +130,16 @@
 
 			<div class="signup">
 				<form method="post" name="R" id="R" action="" onsubmit="return return()">
-					<label for="chk" aria-hidden="true">Registrarse</label>
+					<label for="chk" aria-hidden="true">Erregistratu</label>
                     <input type="text" name="mailR" placeholder="mail" required="">
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
-					<input type="text" name="name" placeholder="Nombre" required="">
-                    <input type="text" name="surname" placeholder="Apellido" required="">
-                    <input type="text" name="age" placeholder="Edad" required="">
-					<input type="password" name="pswdr" placeholder="Contraseña" required="">
-                    <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
+					<input type="text" name="name" placeholder="Izena" required="">
+                    <input type="text" name="surname" placeholder="Abizena" required="">
+                    <input type="text" name="age" placeholder="Adina" required="">
+					<input type="password" name="pswdr" placeholder="Pasahitza" required="">
+                    <input type="password" name="pswdc" placeholder="Baieztatu pasahitza" required="">
 					<p id="ERROR"></p>
-                    <button type="submit" name="register" value="Submit">Registrarse</button>
+                    <button type="submit" name="register" value="Submit">Erregistratu</button>
 				</form>
 			</div>
 
@@ -149,7 +149,7 @@
 					<input type="text" name="user" placeholder="Nickname" autocomplete="off">
 					<input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
 					<button type="submit" name="login" value="Submit">Login</button>
-                    <button type="submit" name="inv" value="Submit">Invitado</button>
+                    <button type="submit" name="inv" value="Submit">Erab. Gonbidatua</button>
 				</form>
 			</div>
 	</div>

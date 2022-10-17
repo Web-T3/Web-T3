@@ -8,7 +8,7 @@ $mail = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
 $nickname = isset($_REQUEST['nicknname']) ? $_REQUEST['nickname'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
 $apellido = isset($_REQUEST['apellido']) ? $_REQUEST['apellido'] : null;
-$contrasenya = isset($_REQUEST['contraseña']) ? $_REQUEST['contraseña'] : null;
+$contrasenya = isset($_REQUEST['contrasenya']) ? $_REQUEST['contrasenya'] : null;
 $edad = isset($_REQUEST['edad']) ? $_REQUEST['edad'] : null;
 $rol = isset($_REQUEST['rol']) ? $_REQUEST['rol'] : null;
 $grupo = isset($_REQUEST['grupo']) ? $_REQUEST['grupo'] : null;
@@ -20,27 +20,29 @@ $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
 
 // Konprobatu POST-etik datuak datozen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $data = 
+    [   
+        'mail' => $mail,
+        'nickname' => $nickname,
+        'nombre' => $nombre,
+        'apellido' => $apellido,
+        'contrasenya' => $contrasenya,
+        'edad' => $edad,
+        'rol' => $rol,
+        'grupo' => $grupo,
+        'lib_leido' => $libro
+    ];
+    $sql = ('UPDATE Usuarios SET nickname = :nickname, nombre = :nombre, apellido = :apellido, edad = :edad, rol = :rol, lib_leido = :lib_leido WHERE mail = :mail');
     // Preparatu UPDATE
-    $nireUpdate = $miPDO->prepare('UPDATE Usuarios SET mail = :mail nickname = :nickname, nombre = :nombre, apellido = :apellido, edad = :edad, rol = :rol, lib_leido = :lib_leido WHERE mail = :mail');
+    $nireUpdate = $miPDO->prepare($sql);
     // Exekutatu UPDATE datuekin
-    $nireUpdate->execute(
-        [   
-            'mail' => $mail,
-            'nickname' => $nickname,
-            'nombre' => $nombre,
-            'apellido' => $apellido,
-            'contraseña' => $contrasenya,
-            'edad' => $edad,
-            'rol' => $rol,
-            'grupo' => $grupo,
-            'lib_leido' => $libro
-        ]
-    );
+    $nireUpdate->execute($data);
     // usuarios.php-ra bialdu
     header('Location: usuarios.php');
 } else {
     // Preparatu SELECT
-    $nireKonts = $miPDO->prepare('SELECT * FROM Usuarios WHERE mail = :mail;');
+    $nireKonts = $miPDO->prepare('SELECT * FROM `Usuarios` WHERE `mail` = :mail;');
     // Exekutatu kontsulta
     $nireKonts->execute(
         [
@@ -74,23 +76,27 @@ $datuak = $nireKonts->fetch();
             <input id="apellido" type="text" name="apellido" value="<?= $datuak['apellido'] ?>">
         </p>
         <p>
-            <label for="contraseña">Pasahitza</label>
-            <input id="contraseña" type="text" name="contraseña" value="<?= $datuak['contraseña'] ?>">
+            <label for="contrasenya">Pasahitza</label>
+            <input id="contrasenya" type="text" name="contrasenya" value="<?= $datuak['contrasenya'] ?>">
         </p>
         <p>
             <label for="edad">Adina</label>
             <input id="edad" type="text" name="edad" value="<?= $datuak['edad'] ?>">
-        </p>
+        </p>    
         <p>
             <label for="rol">Rola</label>
             <input id="rol" type="text" name="rol" value="<?= $datuak['rol'] ?>">
+        </p>
+        <p>
+            <label for="grupo">Taldea</label>
+            <input id="grupo" type="text" name="grupo" value="<?= $datuak['grupo'] ?>">
         </p>
         <p>
             <label for="libro">Liburuak</label>
             <input id="libro" type="text" name="libro" value="<?= $datuak['lib_leido'] ?>">
         </p>
         <p>
-            <input type="hidden" name="mail" value="<?= $nickname ?>">
+            <input type="hidden" name="mail" value="<?= $mail ?>">
             <input type="submit" value="Aldatu">
         </p>
     </form>
