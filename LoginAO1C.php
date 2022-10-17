@@ -17,6 +17,7 @@
             }
             if(isset($_POST['register'])){
             // Aldagaiak hartu
+            $mail = isset($_REQUEST['mailR']) ? $_REQUEST['mailR'] : null;
             $nick = isset($_REQUEST['nicknameR']) ? $_REQUEST['nicknameR'] : null;
             $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : null;
             $surname = isset($_REQUEST['surname']) ? $_REQUEST['surname'] : null;
@@ -38,10 +39,11 @@
             if($pass == $passc){
             // Preparatu INSERT
             
-            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`nickname`, `nombre`, `apellido`, `contraseña`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
+            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contraseña`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
             array(
+                'mail' => $mail,
                 'nickname' => $nick,
                 'nombre' => $name,
                 'apellido' => $surname,
@@ -52,11 +54,10 @@
                 'lib_leido' => $rbook
             )
             );
-            echo "<a>hola3</a>";
             $datuak = $miInsert->fetch();
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
             session_start();
-            $_SESSION['nickname'] = $_REQUEST['nickname'];
+            $_SESSION['mail'] = $_REQUEST['mail'];
             // Orrialde segurura bidaltzen dugu
             header('Location: index.html');
             die();
@@ -130,6 +131,7 @@
 			<div class="signup">
 				<form method="post" name="R" id="R" action="" onsubmit="return return()">
 					<label for="chk" aria-hidden="true">Registrarse</label>
+                    <input type="text" name="mailR" placeholder="mail" required="">
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
 					<input type="text" name="name" placeholder="Nombre" required="">
                     <input type="text" name="surname" placeholder="Apellido" required="">

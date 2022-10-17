@@ -26,19 +26,21 @@ $nireKonts->execute();
 <body>
     <table>
         <tr>
-            <th>nickname</th>
-            <th>nombre</th>
-            <th>apellido</th>
-            <th>contraseña</th>
-            <th>edad</th>
-            <th>rol</th>
-            <th>grupo</th>
-            <th>lib_leido</th>
+            <th>Mail</th>
+            <th>Nickname</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Contraseña</th>
+            <th>Edad</th>
+            <th>Rol</th>
+            <th>Grupo</th>
+            <th>Lib. Irakurrita</th>
             <td></td>
             <td></td>
         </tr>
     <?php foreach ($nireKonts as $key => $balorea): ?> 
         <tr>
+            <td><?= $balorea['mail']; ?></td>
            <td><?= $balorea['nickname']; ?></td>
            <td><?= $balorea['nombre']; ?></td>
            <td><?= $balorea['apellido']; ?></td>
@@ -48,8 +50,8 @@ $nireKonts->execute();
            <td><?= $balorea['grupo']; ?></td>
            <td><?= $balorea['lib_leido']; ?></td>
            <!-- Aurrerago erabiliko da eliminatzeko edo aldatzeko erregistroa -->
-           <td><a class="button" href="aldaketa.php?codigo=<?= $balorea['nickname'] ?>">Aldatu</a></td>
-           <td><a class="button" href="ezabatu.php?codigo=<?= $balorea['nickname'] ?>">Ezabatu</a></td>
+           <td><a class="button" href="aldaketa.php?codigo=<?= $balorea['mail'] ?>">Aldatu</a></td>
+           <td><a class="button" href="ezabatu.php?codigo=<?= $balorea['mail'] ?>">Ezabatu</a></td>
         </tr>
     <?php endforeach; ?>
     </table>

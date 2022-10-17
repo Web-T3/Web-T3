@@ -4,6 +4,7 @@ $hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
 $nombreDB = 'e1webgune';
 $usuarioDB = 'admin';
 $contrasenyaDB = 'NausicaA';
+$mail = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
 $nickname = isset($_REQUEST['nicknname']) ? $_REQUEST['nickname'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
 $apellido = isset($_REQUEST['apellido']) ? $_REQUEST['apellido'] : null;
@@ -20,10 +21,11 @@ $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
 // Konprobatu POST-etik datuak datozen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Preparatu UPDATE
-    $nireUpdate = $miPDO->prepare('UPDATE Usuarios SET nickname = :nickname, nombre = :nombre, apellido = :apellido, edad = :edad, rol = :rol, lib_leido = :lib_leido WHERE nickname = :nickname');
+    $nireUpdate = $miPDO->prepare('UPDATE Usuarios SET mail = :mail nickname = :nickname, nombre = :nombre, apellido = :apellido, edad = :edad, rol = :rol, lib_leido = :lib_leido WHERE mail = :mail');
     // Exekutatu UPDATE datuekin
     $nireUpdate->execute(
-        [
+        [   
+            'mail' => $mail,
             'nickname' => $nickname,
             'nombre' => $nombre,
             'apellido' => $apellido,
@@ -38,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: usuarios.php');
 } else {
     // Preparatu SELECT
-    $nireKonts = $miPDO->prepare('SELECT * FROM Usuarios WHERE nickname = :nickname;');
+    $nireKonts = $miPDO->prepare('SELECT * FROM Usuarios WHERE mail = :mail;');
     // Exekutatu kontsulta
     $nireKonts->execute(
         [
-            'nickname' => $nickname
+            'mail' => $mail
         ]
     );
 }
@@ -88,7 +90,7 @@ $datuak = $nireKonts->fetch();
             <input id="libro" type="text" name="libro" value="<?= $datuak['lib_leido'] ?>">
         </p>
         <p>
-            <input type="hidden" name="nickname" value="<?= $nickname ?>">
+            <input type="hidden" name="mail" value="<?= $nickname ?>">
             <input type="submit" value="Aldatu">
         </p>
     </form>

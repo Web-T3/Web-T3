@@ -8,12 +8,12 @@ $contrasenyaDB = 'NausicaA';
 $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
 $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
 // Borratu nahi dugun liburuaren kodea lortu
-$codigo = isset($_REQUEST['nickname']) ? $_REQUEST['nickname'] : null;
+$codigo = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
 // Preparatu DELETE
-$miConsulta = $miPDO->prepare('DELETE FROM Usuarios WHERE nickname = :nickname');
+$miConsulta = $miPDO->prepare('DELETE FROM Usuarios WHERE mail = :mail');
 // Exekutatu sententzia SQL
 $miConsulta->execute([
-    'nickname' => $nickname
+    'mail' => $mail
 ]);
 // irakurri.php-era bialdu
 header('Location: usuarios.php');
