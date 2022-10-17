@@ -36,7 +36,7 @@ label{
 	transition: .5s ease-in-out;
 }
 input{
-	width: 60%;
+	 width: 60%;
 	height: 20px;
 	background: #e0dede;
 	justify-content: center;
@@ -45,7 +45,8 @@ input{
 	padding: 10px;
 	border: none;
 	outline: none;
-	border-radius: 5px;
+	border-radius: 5px; 
+
 }
 button{
 	width: 60%;
@@ -64,8 +65,15 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
-	background: #2B4F71;
+.third {
+  border-color: #2B4F71;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #2B4F71 inset, 0 0 0 0 #2B4F71;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.third:hover {
+  box-shadow: 0 0 10px 0 #657a97 inset, 0 0 10px 4px #657a97;
 }
 .login{
 	height: 460px;
