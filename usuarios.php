@@ -50,8 +50,8 @@ $nireKonts->execute();
            <td><?= $balorea['grupo']; ?></td>
            <td><?= $balorea['lib_leido']; ?></td>
            <!-- Aurrerago erabiliko da eliminatzeko edo aldatzeko erregistroa -->
-           <td><a class="button" href="aldaketa.php?codigo=<?= $balorea['mail'] ?>">Aldatu</a></td>
-           <td><a class="button" href="ezabatu.php?codigo=<?= $balorea['mail'] ?>">Ezabatu</a></td>
+           <td><a class="button" href="aldaketa.php?mail=<?= $balorea['mail'] ?>">Aldatu</a></td>
+           <td><a class="button" href="ezabatu.php?mail=<?= $balorea['mail'] ?>">Ezabatu</a></td>
         </tr>
     <?php endforeach; ?>
     </table>

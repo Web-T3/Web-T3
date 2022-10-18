@@ -5,7 +5,7 @@ $nombreDB = 'e1webgune';
 $usuarioDB = 'admin';
 $contrasenyaDB = 'NausicaA';
 $mail = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
-$nickname = isset($_REQUEST['nicknname']) ? $_REQUEST['nickname'] : null;
+$nickname = isset($_REQUEST['nickname']) ? $_REQUEST['nickname'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
 $apellido = isset($_REQUEST['apellido']) ? $_REQUEST['apellido'] : null;
 $contrasenya = isset($_REQUEST['contrasenya']) ? $_REQUEST['contrasenya'] : null;
@@ -20,24 +20,10 @@ $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
 
 // Konprobatu POST-etik datuak datozen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $data = 
-    [   
-        'mail' => $mail,
-        'nickname' => $nickname,
-        'nombre' => $nombre,
-        'apellido' => $apellido,
-        'contrasenya' => $contrasenya,
-        'edad' => $edad,
-        'rol' => $rol,
-        'grupo' => $grupo,
-        'lib_leido' => $libro
-    ];
-    $sql = ('UPDATE Usuarios SET nickname = :nickname, nombre = :nombre, apellido = :apellido, edad = :edad, rol = :rol, lib_leido = :lib_leido WHERE mail = :mail');
     // Preparatu UPDATE
-    $nireUpdate = $miPDO->prepare($sql);
+    $nireUpdate = $miPDO->prepare("UPDATE `Usuarios` SET `nickname` = '$nickname', `nombre` = '$nombre', `apellido` = '$apellido', `contrasenya` = '$contrasenya', `edad` = '$edad', `rol` = '$rol', `grupo` = $grupo,  `lib_leido` = '$libro' WHERE `mail` = '$mail'");
     // Exekutatu UPDATE datuekin
-    $nireUpdate->execute($data);
+    $nireUpdate->execute();
     // usuarios.php-ra bialdu
     header('Location: usuarios.php');
 } else {
@@ -92,8 +78,8 @@ $datuak = $nireKonts->fetch();
             <input id="grupo" type="text" name="grupo" value="<?= $datuak['grupo'] ?>">
         </p>
         <p>
-            <label for="libro">Liburuak</label>
-            <input id="libro" type="text" name="libro" value="<?= $datuak['lib_leido'] ?>">
+            <label for="lib_leido">Liburuak</label>
+            <input id="lib_leido" type="text" name="lib_leido" value="<?= $datuak['lib_leido'] ?>">
         </p>
         <p>
             <input type="hidden" name="mail" value="<?= $mail ?>">
