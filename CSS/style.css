@@ -233,7 +233,7 @@ footer {
         flex-direction: column;
         width: 25vh;
         height: 35vh;
-        color: white;
+        color: var(--black-color);
         justify-self: center;
     }
 
@@ -279,7 +279,6 @@ footer {
         align-items: center;
         width: 100%;
         height: 20%;
-        background-color: grey;
     }
 
 }
@@ -503,6 +502,7 @@ footer {
 @media screen and (max-width: 767px) {
 
     .body {
+        overflow-x: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -531,7 +531,7 @@ footer {
     }
     
     header {
-        justify-content: space-evenly;
+        justify-content: flex-start;
     }
 
     .logo {
@@ -554,7 +554,7 @@ footer {
     .dropdown-content {
         display: none;
         position: absolute;
-        width: 250px;
+        width: 150px;
         font-size: .7em;
         overflow: auto;
         box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
@@ -588,7 +588,7 @@ footer {
         align-items: center;
         width: 100%;
         max-width: 50px;
-        margin-left: 10%;
+        margin-left: 30%;
     }
     
     .search {
@@ -659,19 +659,20 @@ footer {
     
     .nuestrosNombres {
         display: flex;
-        flex-direction: row;
-        margin-right: 2em;
+        flex-direction: column;
+        padding-right: 2em;
         gap: .5em;
     }
     
     .mail {
         float: left;
     }
+
     /* PAGINA PRINCIPAL */
     .containerIndex {
         display: grid;
         grid-template-columns: repeat(2, minmax(1px, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(50vh, 60vh));
+        grid-template-rows: repeat(auto-fit, minmax(30vh, 40vh));
         align-items: center;
         row-gap: 0;
     }
@@ -679,21 +680,21 @@ footer {
     .libro {
         display: flex;
         flex-direction: column;
-        width: 20vh;
-        height: 30vh;
+        width: 17vh;
+        height: 25vh;
         color: white;
         justify-self: center;
     }
 
     .libro:hover {
-        width: 35vh;
-        height: 55vh;
+        width: 25vh;
+        height: 35vh;
         transition: 1s;
     }
 
     .libro:not(:hover) {
-        width: 25vh;
-        height: 35vh;
+        width: 17vh;
+        height: 25vh;
         transition: .5s;
     }
 

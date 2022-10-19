@@ -24,7 +24,6 @@ var Busqueda = () => {
   input.focus();
 }
 
-alert("Simyo");
 
 var BuscarLibro = () => {
   document.querySelector("#searchInput").style.visibility = "hidden";
@@ -32,18 +31,15 @@ var BuscarLibro = () => {
 
 var ImgHover = () => {
   const TITULOLIBRO = document.querySelector(".tituloLibro");
-  const TITULOHOVER = document.querySelector("#tituloHover");
-  const SINOPSISHOVER = document.querySelector("#sinopsisHover");
 
-  TITULOHOVER.innerHTML = TITULOLIBRO.innerHTML;
+  TITULOLIBRO.style.visibility = "hidden";
   SINOPSISHOVER.innerHTML = "";
 }
 
 
 var ImgNormal = () => {
-  const TITULOHOVER = document.querySelector("#tituloHover");
-  const SINOPSISHOVER = document.querySelector("#sinopsisHover");
+  const TITULOLIBRO = document.querySelector(".tituloLibro");
 
-  TITULOHOVER.innerHTML = "";
+  TITULOLIBRO.style.visibility = "visible";
   SINOPSISHOVER.innerHTML = "";
 }
