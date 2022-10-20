@@ -12,11 +12,12 @@
     <body>
         <?php
             if(isset($_POST['inv'])){
-                header('Location: index.html');
+                header('Location: index.php');
                 die();
             }
             if(isset($_POST['register'])){
             // Aldagaiak hartu
+            $mail = isset($_REQUEST['mailR']) ? $_REQUEST['mailR'] : null;
             $nick = isset($_REQUEST['nicknameR']) ? $_REQUEST['nicknameR'] : null;
             $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : null;
             $surname = isset($_REQUEST['surname']) ? $_REQUEST['surname'] : null;
@@ -30,35 +31,41 @@
             // aldagaiak
             $hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
             $nombreDB = 'e1webgune';
-            $usuarioDB = 'LeyreBoyra';
+            $usuarioDB = 'admin';
             $contrasenyaDB = 'NausicaA';
             // Datu basearekin konektatu
             $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
             $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
             if($pass == $passc){
             // Preparatu INSERT
-            $miInsert = $miPDO->prepare('INSERT INTO Usuarios (nickname, nombre, apellido, contraseña, edad, rol, grupo, lib_leido) VALUES (:nick, :name, :surname, :pass, :age, :rol, :group, :rbook)');
+            
+            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
-                        array(
-                            'nickname' => $titulo,
-                            'nombre' => $name,
-                            'apellido' => $surname,
-                            'contraseña' => $pass,
-                            'edad' => $age,
-                            'rol' => $rol,
-                            'grupo' => $group,
-                            'lib_leido' => $rbook
-                            )
+            array(
+                'mail' => $mail,
+                'nickname' => $nick,
+                'nombre' => $name,
+                'apellido' => $surname,
+                'contrasenya' => $pass,
+                'edad' => $age,
+                'rol' => $rol,
+                'grupo' => $group,
+                'lib_leido' => $rbook
+            )
             );
+            $datuak = $miInsert->fetch();
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
             session_start();
-            $_SESSION['nickname'] = $_REQUEST['nickname'];
+            $_SESSION['mail'] = $_REQUEST['mail'];
             // Orrialde segurura bidaltzen dugu
-            header('Location: index.html');
+            header('Location: index.php');
             die();
             }else{
-                echo '<div class="error"><b>Las contraseñas no coinciden.</b></div>';
+                echo '
+                <script>
+                document.getElementById("ERROR").innerHTML = "ERROR: Pasahitzak ez dira berdinak.";
+                </script>';
             }
             
             }
@@ -66,7 +73,7 @@
 
                 // Aldagaia hauek datu basetik irakurriko ditugu
                 $zerbitzaria = "wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com";
-                $erabiltzailea ="LeyreBoyra";
+                $erabiltzailea ="admin";
                 $pasahitza = "NausicaA";
                 $datubasea = "e1webgune";
 
@@ -80,7 +87,7 @@
                     // ezarri PDO exception modura
                     $konexioa->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // sql 
-                    $sql = "SELECT contraseña FROM Usuarios WHERE nickname= '$izena' ";
+                    $sql = "SELECT contrasenya FROM Usuarios WHERE nickname= '$izena' ";
                     $emaitza = $konexioa->query($sql);
                     $datuak = $emaitza->fetchAll();
                     if(!isset($datuak)){
@@ -88,18 +95,20 @@
                     } 
                     else {
                         error_reporting(0);
-                        $pasahitzZuzena = $datuak[0]['contraseña'];
+                        $pasahitzZuzena = $datuak[0]['contrasenya'];
                         // Sartutako datuak zuzenak diren egiaztatu
                     if ($pasahitzZuzena == $pasahitz) {
                         // Zuzenak badira, saioa hasiko dugu sartutako datuekin
                         session_start();
-                        $_SESSION['user'] = $_REQUEST['user'];
+                        $_SESSION['mail'] = $_REQUEST['mail'];
                         // Orrialde segurura bidaltzen dugu
-                        header('Location: index.html');
+                        header('Location: index.php');
                         die();
                     } else {
                         // Datuak zuzenak ez badira, erabiltzaileari jakinarazi
-                        echo '<div class="error"><b>Usuario o contraseña no validos.</b></div>';
+                        echo '<script>
+                        document.getElementById("ERROR").innerHTML = "ERROR: Nickname edo pasahitza ez dira berdinak.";
+                        </script>';
                     }
                         
                     }
@@ -120,15 +129,17 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form method="post" name="R" id="R" action="">
+				<form method="post" name="R" id="R" action="" onsubmit="return return()">
 					<label for="chk" aria-hidden="true">Registrarse</label>
+                    <input type="text" name="mailR" placeholder="Email" required="">
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
 					<input type="text" name="name" placeholder="Nombre" required="">
                     <input type="text" name="surname" placeholder="Apellido" required="">
                     <input type="text" name="age" placeholder="Edad" required="">
 					<input type="password" name="pswdr" placeholder="Contraseña" required="">
                     <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
-					<button type="submit" name="register" value="Submit">Registrarse</button>
+					<p id="ERROR"></p>
+                    <button class="third" type="submit" name="register" value="Submit">Registrarse</button>
 				</form>
 			</div>
 
@@ -137,10 +148,17 @@
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="text" name="user" placeholder="Nickname" autocomplete="off">
 					<input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
-					<button type="submit" name="login" value="Submit">Login</button>
-                    <button type="submit" name="inv" value="Submit">Invitado</button>
+					<button class="third" type="submit" name="login" value="Submit">Login</button>
+                    <button class="third" type="submit" name="inv" value="Submit">Invitado</button>
 				</form>
 			</div>
 	</div>
+    <script>
+        var return = () => {
+            return(false);
+        }
+
+        var 
+    </script>
     </body>
 </html>
