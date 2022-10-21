@@ -1,15 +1,8 @@
 <?php
-// Aldagaiak
-$hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
-$nombreDB = 'e1webgune';
-$usuarioDB = 'admin';
-$contrasenyaDB = 'NausicaA';
-// Datu basera konektatu
-$hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
-$miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
+    include 'dbcon.php';
 // SELECT prestatu
 session_start();
-$miConsulta = $miPDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
+$miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
 // Kontsulta exekutatu
 $miConsulta->execute();
 

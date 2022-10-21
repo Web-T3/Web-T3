@@ -28,14 +28,7 @@
             $group = '1';
             $rbook = '-';
 
-            // aldagaiak
-            $hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
-            $nombreDB = 'e1webgune';
-            $usuarioDB = 'admin';
-            $contrasenyaDB = 'NausicaA';
-            // Datu basearekin konektatu
-            $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
-            $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
+            include 'dbcon.php';
             if($pass == $passc){
             // Preparatu INSERT
             
@@ -129,8 +122,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form method="post" name="R" id="R" action="" onsubmit="return return()">
-<<<<<<< HEAD
+				<form method="post" name="R" id="R" action="">
 					<label for="chk" aria-hidden="true">Erregistratu</label>
                     <input type="text" name="mailR" placeholder="mail" required="">
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
@@ -141,18 +133,6 @@
                     <input type="password" name="pswdc" placeholder="Baieztatu pasahitza" required="">
 					<p id="ERROR"></p>
                     <button type="submit" name="register" value="Submit">Erregistratu</button>
-=======
-					<label for="chk" aria-hidden="true">Registrarse</label>
-                    <input type="text" name="mailR" placeholder="Email" required="">
-					<input type="text" name="nicknameR" placeholder="Nickname" required="">
-					<input type="text" name="name" placeholder="Nombre" required="">
-                    <input type="text" name="surname" placeholder="Apellido" required="">
-                    <input type="text" name="age" placeholder="Edad" required="">
-					<input type="password" name="pswdr" placeholder="Contraseña" required="">
-                    <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
-					<p id="ERROR"></p>
-                    <button class="third" type="submit" name="register" value="Submit">Registrarse</button>
->>>>>>> origin/DevelopmentAO
 				</form>
 			</div>
 
@@ -161,13 +141,8 @@
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="text" name="user" placeholder="Nickname" autocomplete="off">
 					<input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
-<<<<<<< HEAD
 					<button type="submit" name="login" value="Submit">Login</button>
                     <button type="submit" name="inv" value="Submit">Erab. Gonbidatua</button>
-=======
-					<button class="third" type="submit" name="login" value="Submit">Login</button>
-                    <button class="third" type="submit" name="inv" value="Submit">Invitado</button>
->>>>>>> origin/DevelopmentAO
 				</form>
 			</div>
 	</div>
