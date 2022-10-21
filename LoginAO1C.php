@@ -12,7 +12,7 @@
     <body>
         <?php
             if(isset($_POST['inv'])){
-                header('Location: index.html');
+                header('Location: index.php');
                 die();
             }
             if(isset($_POST['register'])){
@@ -59,7 +59,7 @@
             session_start();
             $_SESSION['mail'] = $_REQUEST['mail'];
             // Orrialde segurura bidaltzen dugu
-            header('Location: index.html');
+            header('Location: index.php');
             die();
             }else{
                 echo '
@@ -100,9 +100,9 @@
                     if ($pasahitzZuzena == $pasahitz) {
                         // Zuzenak badira, saioa hasiko dugu sartutako datuekin
                         session_start();
-                        $_SESSION['user'] = $_REQUEST['user'];
+                        $_SESSION['mail'] = $_REQUEST['mail'];
                         // Orrialde segurura bidaltzen dugu
-                        header('Location: index.html');
+                        header('Location: index.php');
                         die();
                     } else {
                         // Datuak zuzenak ez badira, erabiltzaileari jakinarazi
@@ -130,6 +130,7 @@
 
 			<div class="signup">
 				<form method="post" name="R" id="R" action="" onsubmit="return return()">
+<<<<<<< HEAD
 					<label for="chk" aria-hidden="true">Erregistratu</label>
                     <input type="text" name="mailR" placeholder="mail" required="">
 					<input type="text" name="nicknameR" placeholder="Nickname" required="">
@@ -140,6 +141,18 @@
                     <input type="password" name="pswdc" placeholder="Baieztatu pasahitza" required="">
 					<p id="ERROR"></p>
                     <button type="submit" name="register" value="Submit">Erregistratu</button>
+=======
+					<label for="chk" aria-hidden="true">Registrarse</label>
+                    <input type="text" name="mailR" placeholder="Email" required="">
+					<input type="text" name="nicknameR" placeholder="Nickname" required="">
+					<input type="text" name="name" placeholder="Nombre" required="">
+                    <input type="text" name="surname" placeholder="Apellido" required="">
+                    <input type="text" name="age" placeholder="Edad" required="">
+					<input type="password" name="pswdr" placeholder="Contraseña" required="">
+                    <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
+					<p id="ERROR"></p>
+                    <button class="third" type="submit" name="register" value="Submit">Registrarse</button>
+>>>>>>> origin/DevelopmentAO
 				</form>
 			</div>
 
@@ -148,8 +161,13 @@
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="text" name="user" placeholder="Nickname" autocomplete="off">
 					<input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
+<<<<<<< HEAD
 					<button type="submit" name="login" value="Submit">Login</button>
                     <button type="submit" name="inv" value="Submit">Erab. Gonbidatua</button>
+=======
+					<button class="third" type="submit" name="login" value="Submit">Login</button>
+                    <button class="third" type="submit" name="inv" value="Submit">Invitado</button>
+>>>>>>> origin/DevelopmentAO
 				</form>
 			</div>
 	</div>
