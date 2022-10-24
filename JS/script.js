@@ -1,6 +1,11 @@
 window.onload = CargaEventos;
 
 function CargaEventos() {
+
+  //Accion al darle click al libro
+  const INDEX = document.querySelector(".logo");
+  INDEX.addEventListener("click", Index);
+
   // Accion al darle click a la lupa
   const LUPA = document.querySelector(".lupa");
   LUPA.addEventListener("click", Busqueda);
@@ -17,13 +22,15 @@ function CargaEventos() {
 
 }
 
+var Index = () => {
+  location.href = "../index.html"
+}
 
 var Busqueda = () => {
   var input = document.getElementById("searchInput");
   input.style.visibility = "visible";
   input.focus();
 }
-
 
 var BuscarLibro = () => {
   document.querySelector("#searchInput").style.visibility = "hidden";
@@ -35,7 +42,6 @@ var ImgHover = () => {
   TITULOLIBRO.style.visibility = "hidden";
   SINOPSISHOVER.innerHTML = "";
 }
-
 
 var ImgNormal = () => {
   const TITULOLIBRO = document.querySelector(".tituloLibro");
