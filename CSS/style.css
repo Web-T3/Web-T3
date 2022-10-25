@@ -381,6 +381,43 @@ footer {
         background-color: lightgrey;
     }
 
+    /* Pagina Mi Perfil */
+
+    .containerMiPerfil{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+
+        grid-template-areas:
+                            ". . tituloLibrosLeidos tituloLibrosLeidos ."
+                            ". librosLeidos librosLeidos librosLeidos ."
+                            ". librosLeidos librosLeidos librosLeidos ."
+                            ". reseñas reseñas reseñas ."
+                            ". reseñas reseñas reseñas ."
+                            ". reseñas reseñas reseñas .";
+    }
+    
+    .containerLibrosLeidos{
+        display: flex;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 25px;
+        column-gap: 20px;
+        overflow-x: scroll;
+        grid-area: librosLeidos;
+    }
+
+    #tituloLibrosLeidos{
+        grid-area: tituloLibrosLeidos;
+        align-self: center;
+    }
+
+    .libros{
+        flex: 0 0 25%;
+        padding: 30px;
+        scroll-snap-align: start;
+        background-color: #191919;
+    }
+
 }
 
 /* >------------------[Tablet]------------------< */
