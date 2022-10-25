@@ -17,6 +17,7 @@ function CargaEventos() {
   // Imagen cuando esta el mouse encima
   const IMG = document.querySelector(".libro");
   IMG.addEventListener("mouseover", ImgHover);
+  
   // Imagen vuelta a lo normal
   IMG.addEventListener("mouseout", ImgNormal);
 

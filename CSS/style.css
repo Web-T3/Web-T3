@@ -44,7 +44,7 @@ a {
     filter: drop-shadow(2px 1px 3px var(--dark-color));
 }
 
-.logo{
+.logo {
     cursor: pointer;
 }
 
@@ -68,29 +68,29 @@ footer {
     border-radius: 10px 10px 0 0;
 }
 
-.imgLibroPagina{
+.imgLibroPagina {
     grid-area: libro;
 }
 
-.tituloLibroPagina{
+.tituloLibroPagina {
     grid-area: titulo;
 }
 
-.sinopsisLibroPagina{
+.sinopsisLibroPagina {
     grid-area: sinopsis;
 }
 
-.notaLibroPagina{
+.notaLibroPagina {
     grid-area: notaLibro;
 }
 
-.notaPagina{
+.notaPagina {
     grid-area: notaNumero;
 }
 
-.comentarios{
-    grid-area: comentarios; 
-}  
+.comentarios {
+    grid-area: comentarios;
+}
 
 /* >------------------[Laptop]------------------< */
 @media screen and (min-width: 1024px) {
@@ -126,7 +126,7 @@ footer {
         border-radius: 10px 10px 0 0;
     }
 
-    #sinLupa{
+    #sinLupa {
         gap: 70%;
     }
 
@@ -329,93 +329,167 @@ footer {
         align-items: center;
     }
 
-    .containerLibro{
+    .containerLibro {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(10, 1fr);
         grid-gap: 1em;
-        grid-template-areas: 
-                            ". libro libro titulo titulo notaLibro ."
-                            ". libro libro sinopsis sinopsis sinopsis ."
-                            ". libro libro sinopsis sinopsis sinopsis ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". . . . . . ."
-                            ;
+        grid-template-areas:
+            ". libro libro titulo titulo notaLibro ."
+            ". libro libro sinopsis sinopsis sinopsis ."
+            ". libro libro sinopsis sinopsis sinopsis ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". . . . . . ."
+        ;
     }
 
-    .imgLibroPagina{
+    .imgLibroPagina {
         width: 100%;
     }
 
-    .tituloLibroPagina{
+    .tituloLibroPagina {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .sinopsisLibroPagina{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: justify;
-    }
-
-    .notaLibroPagina{
+    .sinopsisLibroPagina {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: justify;
     }
 
-    .notaPagina{
+    .notaLibroPagina {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: justify;
+    }
+
+    .notaPagina {
         font-weight: bold;
         font-size: 2em;
     }
 
-    .comentarios{
+    .comentarios {
         background-color: lightgrey;
     }
 
     /* Pagina Mi Perfil */
 
-    .containerMiPerfil{
+    .headerPerfil {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .containerMiPerfil {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(7, 1fr);
 
         grid-template-areas:
-                            ". . tituloLibrosLeidos tituloLibrosLeidos ."
-                            ". librosLeidos librosLeidos librosLeidos ."
-                            ". librosLeidos librosLeidos librosLeidos ."
-                            ". reseñas reseñas reseñas ."
-                            ". reseñas reseñas reseñas ."
-                            ". reseñas reseñas reseñas .";
+            ". . tituloLibrosLeidos tituloLibrosLeidos ."
+            ". librosLeidos librosLeidos librosLeidos ."
+            ". librosLeidos librosLeidos librosLeidos ."
+            ". . tituloReseñas tituloReseñas ."
+            ". containerReseñas containerReseñas containerReseñas ."
+            ". containerReseñas containerReseñas containerReseñas .";
     }
-    
-    .containerLibrosLeidos{
+
+    .containerLibrosLeidos {
         display: flex;
         scroll-snap-type: x mandatory;
         scroll-padding: 25px;
         column-gap: 20px;
         overflow-x: scroll;
+        border-radius: .5em;
+        scrollbar-color: var(--object-color) var(--main-color);
+        scrollbar-width: 10px;
         grid-area: librosLeidos;
     }
 
-    #tituloLibrosLeidos{
+    #tituloLibrosLeidos {
         grid-area: tituloLibrosLeidos;
         align-self: center;
     }
 
-    .libros{
+    .libros {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         flex: 0 0 25%;
         padding: 30px;
         scroll-snap-align: start;
-        background-color: #191919;
+        background-color: var(--second-color);
+        border-radius: 1em;
+        color: var(--main-color);
+    }
+
+    .libros>img {
+        width: 100%;
+    }
+
+    .libros>p {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+
+
+    .tituloReseñas {
+        align-self: end;
+        grid-area: tituloReseñas;
+    }
+
+    .containerReseñas {
+        background-color: var(--second-color);
+
+        grid-area: containerReseñas;
+
+        max-height: 350px;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1em;
+        gap: .7em;
+
+        border-radius: 1em;
+
+        scroll-snap-type: y mandatory;
+        scroll-padding: 25px;
+        column-gap: 20px;
+        overflow-y: scroll;
+        scrollbar-color: var(--object-color) var(--second-color);
+        scrollbar-width: 10px;
+    }
+
+    .comentario {
+        width: 80%;
+        padding: .5em;
+        border-radius: .5em;
+        background-color: var(--object-color);
+    }
+
+    .comentario p:first-child {
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+        padding: 3px;
+        width: max-content;
+    }
+
+    .comentario p>span {
+        padding-left: 5px;
+        font-weight: bold;
+        font-size: 1.2em;
     }
 
 }
@@ -637,60 +711,60 @@ footer {
         align-items: center;
     }
 
-    .headerLibro:first-child{
+    .headerLibro:first-child {
         display: flex;
         justify-content: space-around;
     }
 
-    .containerLibro{
+    .containerLibro {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(10, 1fr);
         grid-gap: 1em;
-        grid-template-areas: 
-                            ". libro libro sinopsis sinopsis sinopsis ."
-                            ". libro libro sinopsis sinopsis sinopsis ."
-                            "notaLibro titulo titulo sinopsis sinopsis sinopsis ."
-                            ". . . sinopsis sinopsis sinopsis ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". comentarios comentarios comentarios comentarios comentarios ."
-                            ". . . . . . .";
+        grid-template-areas:
+            ". libro libro sinopsis sinopsis sinopsis ."
+            ". libro libro sinopsis sinopsis sinopsis ."
+            "notaLibro titulo titulo sinopsis sinopsis sinopsis ."
+            ". . . sinopsis sinopsis sinopsis ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". comentarios comentarios comentarios comentarios comentarios ."
+            ". . . . . . .";
     }
 
-    .imgLibroPagina{
+    .imgLibroPagina {
         width: 100%;
     }
 
-    .tituloLibroPagina{
+    .tituloLibroPagina {
         display: flex;
         justify-content: center;
         align-items: flex-start;
         font-size: 1em;
     }
 
-    .sinopsisLibroPagina{
+    .sinopsisLibroPagina {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: justify;
     }
 
-    .notaLibroPagina{
+    .notaLibroPagina {
         display: flex;
         justify-content: flex-end;
         align-items: flex-start;
         text-align: justify;
     }
 
-    .notaPagina{
+    .notaPagina {
         font-weight: bold;
         font-size: 1em;
     }
 
-    .comentarios{
+    .comentarios {
         background-color: lightgrey;
     }
 
@@ -930,32 +1004,31 @@ footer {
         align-items: center;
     }
 
-    .headerLibro{
+    .headerLibro {
         display: flex;
         justify-content: space-around;
     }
-    
 
-    .containerLibro{
+
+    .containerLibro {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: minmax(100px, max-content)
-                       repeat(auto-fill, 25%) 60%;
+        grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 25%) 60%;
         gap: 2em;
-        grid-template-areas: 
-                            ". titulo titulo notaLibro ."
-                            ". libro libro libro  . "
-                            ". sinopsis sinopsis sinopsis ."
-                            ". sinopsis sinopsis sinopsis ."
-                            ". comentarios comentarios comentarios .";
+        grid-template-areas:
+            ". titulo titulo notaLibro ."
+            ". libro libro libro  . "
+            ". sinopsis sinopsis sinopsis ."
+            ". sinopsis sinopsis sinopsis ."
+            ". comentarios comentarios comentarios .";
     }
 
-    .imgLibroPagina{
+    .imgLibroPagina {
         width: 35vh;
         align-self: center;
     }
 
-    .sinopsisLibroPagina{
+    .sinopsisLibroPagina {
         text-align: justify;
     }
 
