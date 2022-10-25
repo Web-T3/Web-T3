@@ -14,7 +14,7 @@ $nireKonts->execute();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="CSS/style.css"> -->
-    <title>Admininistrazioa</title>
+    <title>Admininistrazioa Erabiltzaileak</title>
 </head>
 <body>
     <table>

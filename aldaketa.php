@@ -39,7 +39,7 @@ $datuak = $nireKonts->fetch();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Aldatu</title>
+    <title>Aldatu Erabiltzaileak</title>
 </head>
 <body>
     <form method="post">
