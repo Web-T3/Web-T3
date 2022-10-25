@@ -600,6 +600,11 @@ footer {
         align-items: center;
     }
 
+    .headerLibro:first-child{
+        display: flex;
+        justify-content: space-around;
+    }
+
     .containerLibro{
         display: grid;
         grid-template-columns: repeat(7, 1fr);
@@ -887,14 +892,19 @@ footer {
         justify-content: center;
         align-items: center;
     }
+
+    .headerLibro{
+        display: flex;
+        justify-content: space-around;
+    }
     
 
     .containerLibro{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: minmax(100px, max-content)
-                       repeat(auto-fill, 20%) 40%;
-        grid-gap: 2em;
+                       repeat(auto-fill, 25%) 60%;
+        gap: 2em;
         grid-template-areas: 
                             ". titulo titulo notaLibro ."
                             ". libro libro libro  . "
@@ -904,7 +914,8 @@ footer {
     }
 
     .imgLibroPagina{
-        width: 100%;
+        width: 35vh;
+        align-self: center;
     }
 
     .sinopsisLibroPagina{
