@@ -1,3 +1,53 @@
+<?php
+
+//Datu basea hartu
+include 'dbcon.php';
+//Konprobatu POST-etik hartzen duen datuak
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //Aldagaiak
+    $titulo = $_POST['titulo'];
+    $escritor = $_POST['escritor'];
+    $sinopsis = $_POST['sinopsis'];
+    $idioma = $_POST['idioma'];
+    $formato = $_POST['sl0'];
+    $img_name = $_FILES['imagen']['name'];
+    $archivo = $_FILES['imagen']['tmp_name'];
+    $tamaino = $_FILES['imagen']['size'];
+    $tipo = $_FILES['imagen']['type'];
+
+    if ($archivo != "none") {
+        $fp = fopen($archivo, "rb");
+        $imagen = fread($fp, $tamaino);
+        $imagen = addslashes($imagen);
+        fclose($fp);
+    }
+
+    $etiq = '';
+    $etiq = implode(', ', $_POST['cbox']);
+    //Sartu datu basean
+    $nireInsert = $nirePDO->prepare('INSERT INTO Libros (titulo, escritor, sinopsis, idioma, formato, etiquetas, imagen, estado, tipo) VALUES (:titulo, :escritor, :sinopsis, :idioma, :formato, :etiquetas, :imagen, :estado, :tipo)');
+    // Exekutatu INSERT datuekin
+    $nireInsert->execute(
+        array(
+            'titulo' => $titulo,
+            'ecritor' => $escritor,
+            'sinopsis' => $sinopsis,
+            'idioma' => $idioma,
+            'formato' => $formato,
+            'etiquetas' => $etiq,
+            'imagen' => $imagen,
+            'estado' => 'supervision',
+            'tipo' => $tipo
+        )
+    );
+    // Irakurrira eraman
+    header('Location: index.php');
+    // $insert = "INSERT INTO Libros SET titulo='$titulo', escritor='$escritor', sinopsis='$sinopsis', idioma = '$idioma', formato='$formato', etiquetas='$etiq', imagen='$imagen' estado='supervision', tipo='$tipo'";
+    // echo "$insert";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +61,8 @@
     <title>Añadir Libro</title>
 </head>
 <body>
-<?php
-    include 'dbcon.php';
-?>
 <div class="form">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <td>
             <tr>
                 <br>
@@ -78,7 +125,7 @@
             <tr>
                 <br>
                 <label for="imagen">Portada</label>
-                <input type="file" name="imagen">
+                <input type="file" id="imagen" name="imagen">
                 <br>
             </tr>
             <tr>
