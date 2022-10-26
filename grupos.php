@@ -17,6 +17,7 @@ $nireKonts->execute();
     <title>Admininistrazioa Taldeak</title>
 </head>
 <body>
+    <p><a class="button" href="crearG.php">Berria</a></p>
     <table>
         <tr>
             <th>GID</th>
@@ -29,10 +30,10 @@ $nireKonts->execute();
         <tr>
             <td><?= $balorea['gid']; ?></td>
            <td><?= $balorea['profesor']; ?></td>
-           <td><?= $balorea['Nom_grupo']; ?></td>
+           <td><?= $balorea['nom_grupo']; ?></td>
            <!-- Aurrerago erabiliko da eliminatzeko edo aldatzeko erregistroa -->
-           <td><a class="button" href="aldaketaG.php?mail=<?= $balorea['gid'] ?>">Aldatu</a></td>
-           <td><a class="button" href="ezabatuG.php?mail=<?= $balorea['gid'] ?>">Ezabatu</a></td>
+           <td><a class="button" href="aldaketaG.php?gid=<?= $balorea['gid'] ?>">Aldatu</a></td>
+           <td><a class="button" href="ezabatuG.php?gid=<?= $balorea['gid'] ?>">Ezabatu</a></td>
         </tr>
     <?php endforeach; ?>
     </table>

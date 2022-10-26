@@ -38,12 +38,12 @@ $datuak = $nireKonts->fetch();
 <body>
     <form method="post">
         <p>
-            <label for="nickname">Irakaslea</label>
-            <input id="nickname" type="text" name="nickname" value="<?= $datuak['profesor'] ?>">
+            <label for="profesor">Irakaslea</label>
+            <input id="profesor" type="text" name="profesor" value="<?= $datuak['profesor'] ?>">
         </p>
         <p>
-            <label for="nombre">Taldea</label>
-            <input id="coche" type="text" name="nombre" value="<?= $datuak['nom_grupo'] ?>">
+            <label for="nom_grupo">Taldea</label>
+            <input id="nom_grupo" type="text" name="nom_grupo" value="<?= $datuak['nom_grupo'] ?>">
         </p>
         <p>
             <input type="hidden" name="gid" value="<?= $gid ?>">

@@ -49,7 +49,7 @@ $datuak = $nireKonts->fetch();
         </p>
         <p>
             <label for="nombre">Izena</label>
-            <input id="coche" type="text" name="nombre" value="<?= $datuak['nombre'] ?>">
+            <input id="nombre" type="text" name="nombre" value="<?= $datuak['nombre'] ?>">
         </p>
         <p>
             <label for="apellido">Abizena</label>
