@@ -110,6 +110,19 @@ footer {
     padding: 0 .5em;
 }
 
+/* Pagina Mi Perfil */
+.nick{
+    grid-area: nn;
+}
+
+.datosPersonales{
+    grid-area: dp;
+}
+
+.contrasenya{
+    grid-area: contra;
+}
+
 /* >------------------[Laptop]------------------< */
 @media screen and (min-width: 1024px) {
 
@@ -507,6 +520,60 @@ footer {
         padding-left: 5px;
         font-weight: bold;
         font-size: 1.2em;
+    }
+
+
+
+    /* Pagina Mi Perfil */
+
+    .containerPerfil{
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+
+        grid-template-areas: 
+                            ". . nn nn nn nn . ."
+                            " . dp dp dp contra contra contra . "
+                            " . dp dp dp contra contra contra . "
+                            " . dp dp dp contra contra contra . ";
+    
+        overflow: hidden;
+      }
+
+    .nick{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .nick>img{
+        width: 15%;
+    }
+
+    .inputPerfil{
+        color: var(--dark-color);
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 5px;
+        width: 40%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+        padding: 0 5px;
+        margin: .5em;
+        transition: .5s;
+        height: 2em;
+    }
+
+    .inputPerfil:focus{
+        outline: none;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .4);
+        transition: .5s;
+    }
+
+    .inputPerfil:active{
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
 }

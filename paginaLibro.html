@@ -13,9 +13,9 @@
 
 <body id="bodyLibro">
     <!-- Header -->
-    <header class="headerLibro">
+    <header>
         <img src="Multimedia/logo.png" alt="Logo" class="logo">
-        <div class="rightSide" id="sinLupa">
+        <div class="rightSide">
             <div class="dropdown">
                 <button class='fa fa-filter filtros' style="font-size:35px; color:black">
                     <div class="dropdown-content">
@@ -26,13 +26,17 @@
                     </div>
             </div>
             </button>
+            <form class="search">
+                <input type="text" name="search" id="searchInput" placeholder="Bilatu" autocomplete="off">
+                <img src="Multimedia/lupa.png" class="lupa">
+            </form>
             <div class="dropdown">
                 <img src="Multimedia/no-profile.jpg" alt="" class="profile">
                 <div class="dropdown-content">
                     <p>Nickname</p>
                     <a href="#">Añadir Libro</a>
-                    <a href="#">Mi Ficha</a>
-                    <a href="#">Perfil</a>
+                    <a href="miFicha.html">Mi Ficha</a>
+                    <a href="miPerfil.html">Perfil</a>
                     <a href="#">Admin</a>
                     <a href="#">Cerrar Sesion</a>
                 </div>
