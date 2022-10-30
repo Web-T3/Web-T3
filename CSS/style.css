@@ -19,7 +19,7 @@
 
 }
 
-:root{
+:root {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-padding: 25px;
@@ -43,6 +43,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
 a {
     text-decoration: none;
     color: var(--second-color);
@@ -100,26 +101,26 @@ footer {
     grid-area: comentarios;
 }
 
-#rightSideFicha{
+#rightSideFicha {
     display: flex;
     justify-content: space-around;
 }
 
-.comentario p:nth-child(2){
+.comentario p:nth-child(2) {
     text-align: justify;
     padding: 0 .5em;
 }
 
 /* Pagina Mi Perfil */
-.nick{
+.nick {
     grid-area: nn;
 }
 
-.datosPersonales{
+.datosPersonales {
     grid-area: dp;
 }
 
-.contrasenya{
+.contrasenya {
     grid-area: contra;
 }
 
@@ -526,21 +527,21 @@ footer {
 
     /* Pagina Mi Perfil */
 
-    .containerPerfil{
+    .containerPerfil {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(4, 1fr);
 
-        grid-template-areas: 
-                            ". . nn nn nn nn . ."
-                            " . dp dp dp contra contra contra . "
-                            " . dp dp dp contra contra contra . "
-                            " . dp dp dp contra contra contra . ";
-    
-        overflow: hidden;
-      }
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " . dp dp dp contra contra contra . "
+            " . dp dp dp contra contra contra . "
+            " . dp dp dp contra contra contra . ";
 
-    .nick{
+        overflow: hidden;
+    }
+
+    .nick {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -549,11 +550,11 @@ footer {
         gap: 1em;
     }
 
-    .nick>img{
+    .nick>img {
         width: 15%;
     }
 
-    .inputPerfil{
+    .inputPerfil {
         color: var(--dark-color);
         background-color: var(--main-color);
         border: none;
@@ -566,13 +567,13 @@ footer {
         height: 2em;
     }
 
-    .inputPerfil:focus{
+    .inputPerfil:focus {
         outline: none;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .4);
         transition: .5s;
     }
 
-    .inputPerfil:active{
+    .inputPerfil:active {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
@@ -606,7 +607,7 @@ footer {
         min-width: 768px;
     }
 
-    header{
+    header {
         justify-content: space-between;
     }
 
@@ -861,7 +862,7 @@ footer {
         justify-content: space-between;
     }
 
-    #rightSideFicha{
+    #rightSideFicha {
         justify-content: flex-end;
         margin-right: 1em;
     }
@@ -974,13 +975,65 @@ footer {
         font-size: 1.2em;
     }
 
+    /* Pagina Mi Perfil */
+
+    .containerPerfil {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " . dp dp dp contra contra contra . "
+            " . dp dp dp contra contra contra . "
+            " . dp dp dp contra contra contra . ";
+
+        overflow: hidden;
+    }
+
+    .nick {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .nick>img {
+        width: 15%;
+    }
+
+    .inputPerfil {
+        color: var(--dark-color);
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 5px;
+        width: 40%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+        padding: 0 5px;
+        margin: .5em;
+        transition: .5s;
+        height: 2em;
+    }
+
+    .inputPerfil:focus {
+        outline: none;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .4);
+        transition: .5s;
+    }
+
+    .inputPerfil:active {
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
+    }
+
 }
 
 /* >------------------[Mobile]------------------< */
 @media screen and (max-width: 767px) {
 
 
-    :root{
+    :root {
         scrollbar-width: none;
     }
 
@@ -1362,6 +1415,70 @@ footer {
         padding-left: 5px;
         font-weight: bold;
         font-size: 1.2em;
+    }
+
+    /* Pagina Mi Perfil */
+
+    .containerPerfil {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 10%);
+
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " . dp dp dp contra contra contra . ";
+
+        overflow: hidden;
+    }
+
+    .nick {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1em;
+        height: 10%;
+    }
+
+    .nick>img {
+        width: 15%;
+    }
+
+    .dpTitulo,
+    .contraTitulo {
+        font-size: 1.2em;
+    }
+
+    .datosPersonales,
+    .contrasenya{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputPerfil {
+        color: var(--dark-color);
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 5px;
+        width: 70%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+        padding: 0 5px;
+        margin: .5em;
+        transition: .5s;
+        height: 2em;
+    }
+
+    .inputPerfil:focus {
+        outline: none;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .4);
+        transition: .5s;
+    }
+
+    .inputPerfil:active {
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
 }
