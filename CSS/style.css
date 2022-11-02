@@ -124,6 +124,47 @@ footer {
     grid-area: contra;
 }
 
+/* Pagina Añadir Libro */
+.containerAddLibro,
+.containerAddLibro>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerAddLibro {
+    align-items: center;
+
+}
+
+.containerAddLibro>form {
+    align-items: center;
+    width: 20%;
+    gap: .5em;
+}
+
+.etiquetas {
+    display: grid;
+    font-size: 1em;
+    gap: .5em;
+}
+.etiquetas>label{
+    display: flex;
+}
+
+form>div {
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+
+}
+
+form>div>p,
+form>div>label {
+    display: flex;
+    justify-content: center;
+
+}
+
 /* >------------------[Laptop]------------------< */
 @media screen and (min-width: 1024px) {
 
@@ -577,6 +618,15 @@ footer {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
+
+    /* Pagina Añadir Libro */
+    .etiquetas {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        width: 30vw;
+        min-width: 20vh;
+    }
+
 }
 
 /* >------------------[Tablet]------------------< */
@@ -1027,6 +1077,12 @@ footer {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
+    /* Pagina Añadir Libro */
+    .etiquetas {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+    }
+
 }
 
 /* >------------------[Mobile]------------------< */
@@ -1451,7 +1507,7 @@ footer {
     }
 
     .datosPersonales,
-    .contrasenya{
+    .contrasenya {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1480,5 +1536,11 @@ footer {
     .inputPerfil:active {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
+
+        /* Pagina Añadir Libro */
+        .etiquetas {
+            grid-template-columns: repeat(1, 20vw);
+            grid-template-rows: repeat(auto, 1fr);
+        }
 
 }
