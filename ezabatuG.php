@@ -1,7 +1,8 @@
 <?php
+// Datu basera konektatu
 include 'dbcon.php';
 // Borratu nahi dugun liburuaren kodea lortu
-$mail = isset($_REQUEST['gid']) ? $_REQUEST['gid'] : null;
+$gid = isset($_REQUEST['gid']) ? $_REQUEST['gid'] : null;
 // Preparatu DELETE
 $nireKonts = $nirePDO->prepare("DELETE FROM `Grupos` WHERE `gid` = '$gid'");
 // Exekutatu sententzia SQL
