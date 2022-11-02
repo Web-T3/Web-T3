@@ -10,40 +10,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sinopsis = $_POST['sinopsis'];
     $idioma = $_POST['idioma'];
     $formato = $_POST['sl0'];
-    $img_name = $_FILES['imagen']['name'];
-    $archivo = $_FILES['imagen']['tmp_name'];
+    $archivo = $_FILES['imagen']['name'];
+    $temp = $_FILES['imagen']['tmp_name'];
     $tamaino = $_FILES['imagen']['size'];
     $tipo = $_FILES['imagen']['type'];
 
-    if ($archivo != "none") {
-        $fp = fopen($archivo, "rb");
-        $imagen = fread($fp, $tamaino);
-        $imagen = addslashes($imagen);
-        fclose($fp);
+    //Balidatuko du argazkia badago
+    if ($temp != "") {
+    //Orain ikusiko du zein artxibo mota den eta haren tamainua, balidazioak bezalakoak ez badira, errorea emango du
+        if (!((strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamaino < 2000000))) {
+            echo '<div>Artxiboa '.$tipo.' da</div>';
+            echo '<div>Artxiboaren tamaina '.$tamaino.' da</div>';
+            echo '<div>Error, mesedez sartu jpeg, jpg eta png, eta argazkiaren tamaina izan behar da 2MB baino gutxiago.</div>';
+        } else {
+    //Errorerik ez badu ematen, orduan sartuko du datu basean argazkia
+            $imagen = file_get_contents($temp);
+        }
     }
 
+    //Etiketa multiple hartuko du, egiten da aldagaia
     $etiq = '';
+    //Sartzen da array batean datuak implode bidez
     $etiq = implode(', ', $_POST['cbox']);
     //Sartu datu basean
-    $nireInsert = $nirePDO->prepare('INSERT INTO Libros (titulo, escritor, sinopsis, idioma, formato, etiquetas, imagen, estado, tipo) VALUES (:titulo, :escritor, :sinopsis, :idioma, :formato, :etiquetas, :imagen, :estado, :tipo)');
+    $nireInsert = $nirePDO->prepare('INSERT INTO `Libros` (`titulo`, `escritor`, `sinopsis`, `idiomas`, `formato`, `etiquetas`, `imagen`, `estado`, `tipo`) VALUES (:titulo, :escritor, :sinopsis, :idiomas, :formato, :etiquetas, :imagen, :estado, :tipo)');
     // Exekutatu INSERT datuekin
     $nireInsert->execute(
         array(
             'titulo' => $titulo,
-            'ecritor' => $escritor,
+            'escritor' => $escritor,
             'sinopsis' => $sinopsis,
-            'idioma' => $idioma,
+            'idiomas' => $idioma,
             'formato' => $formato,
             'etiquetas' => $etiq,
             'imagen' => $imagen,
-            'estado' => 'supervision',
+            'estado' => "supervision",
             'tipo' => $tipo
         )
     );
-    // Irakurrira eraman
+    //Bukatzean eramango du index.php
     header('Location: index.php');
-    // $insert = "INSERT INTO Libros SET titulo='$titulo', escritor='$escritor', sinopsis='$sinopsis', idioma = '$idioma', formato='$formato', etiquetas='$etiq', imagen='$imagen' estado='supervision', tipo='$tipo'";
-    // echo "$insert";
 }
 
 ?>
