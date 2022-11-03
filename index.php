@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+    include 'dbcon.php';
+// SELECT prestatu
+session_start();
+$miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
+// Kontsulta exekutatu
+$miConsulta->execute();
+
+?>
 <html lang="en">
 
 <head>
@@ -8,12 +16,13 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="JS/script.js"></script>
-    <title>Profila</title>
+    <title>Liburuak</title>
 </head>
 
 <body class="body">
+   
     <!-- Header -->
-    <header class="headerLibro">
+    <header>
         <img src="Multimedia/logo.png" alt="Logo" class="logo">
         <div class="rightSide">
             <div class="dropdown">
@@ -26,6 +35,10 @@
                     </div>
             </div>
             </button>
+            <form class="search">
+                <input type="text" name="search" id="searchInput" placeholder="Bilatu" autocomplete="off">
+                <img src="Multimedia/lupa.png" class="lupa">
+            </form>
             <div class="dropdown">
                 <img src="Multimedia/no-profile.jpg" alt="" class="profile">
                 <div class="dropdown-content">
@@ -41,40 +54,32 @@
     </header>
 
     <!-- Container -->
-    <div class="container containerPerfil">
+    <div class="container containerIndex">
+        <?php foreach ($miConsulta as $clave => $valor): ?>
+        <div class="libro">
+            <img class="imgLibro" src="data:<?php echo $valor['tipo']?>;base64,<?php echo base64_encode($valor['imagen']);?>">
+                <h3 id="tituloHover"></h3>
+                <p id="sinopsisHover"></p>
+            </img>
 
-        <div class="nick">
-            <img src="/Multimedia/no-profile.jpg" alt="">
-            <h1 class="nickname"> Nickname </h1>
+            <p class="tituloLibro">
+                <?php 
+                $titulo = explode(",",$valor['titulo']);
+                echo $titulo[0];
+                ?>
+            </p>
         </div>
-        
-        <div class="datosPersonales">
-            <h2 class="dpTitulo">Datu Pertsonalak</h2>
-            <input class="inputPerfil" type="text" placeholder="Izena" autocomplete="off">
-            <input class="inputPerfil" type="text" placeholder="Abizena" autocomplete="off">
-            <input class="inputPerfil" type="text" placeholder="Adina" autocomplete="off">
-        </div>
-
-        <div class="contrasenya">
-            <h2 class="contraTitulo">Pasahitza</h2>
-            <input class="inputPerfil" type="password" placeholder="Pasahitza" autocomplete="off">
-            <input class="inputPerfil" type="password" placeholder="Berriro pasahitza" autocomplete="off">
-            <input class="inputPerfil" type="password" placeholder="Pasahitza zaharra" autocomplete="off">
-        </div>
-
-        <!-- <button> Bidali</button> -->
-
-
+        <?php endforeach; ?>
     </div>
 
     <!-- Footer -->
     <footer>
 
         <div class="nuestrosNombres">
-            <p>Iker S.</p>
-            <p>Adrian O.</p>
-            <p>Erlantz B.</p>
-            <p>Gonzalo A.</p>
+            <p>Iker Siles</p>
+            <p>Adrian Ocampo</p>
+            <p>Erlantz Barriuso</p>
+            <p>Gonzalo Azaldegi</p>
         </div>
         <div class="texto">Bigarren Hezkuntzako gazte askok irakurtzeko zaletasuna dugu. Hala ere, liburudendetan
             hainbeste liburu daude, ez dakigula nondik hasi!

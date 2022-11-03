@@ -1,12 +1,3 @@
-<?php
-include 'dbcon.php';
-// SELECT prestatu
-$nireKonts = $nirePDO->prepare('SELECT * FROM Usuarios;');
-// Kontsulta exekutatu
-$nireKonts->execute();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +21,15 @@ $nireKonts->execute();
             <th>Lib. Irakurrita</th>
             <td></td>
             <td></td>
-        </tr>
-    <?php foreach ($nireKonts as $key => $balorea): ?> 
+        </tr>        
         <tr>
+        <?php
+        include 'conn.php';
+        // SELECT prestatu
+        $query = $conn->query('SELECT * FROM Usuarios ORDER BY nickname DESC;');
+        if($query->num_rows > 0){
+            while($balorea = $query->fetch_assoc()) { 
+        ?>
             <td><?= $balorea['mail']; ?></td>
            <td><?= $balorea['nickname']; ?></td>
            <td><?= $balorea['nombre']; ?></td>
@@ -46,7 +43,8 @@ $nireKonts->execute();
            <td><a class="button" href="aldaketa.php?mail=<?= $balorea['mail'] ?>">Aldatu</a></td>
            <td><a class="button" href="ezabatu.php?mail=<?= $balorea['mail'] ?>">Ezabatu</a></td>
         </tr>
-    <?php endforeach; ?>
+        <?php } ?>
+    <?php } ?>
     </table>
 </body>
 </html>

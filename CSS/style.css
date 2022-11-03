@@ -16,8 +16,6 @@
     font-family: 'Oxygen';
     margin: 0;
     padding: 0;
-<<<<<<< HEAD
-=======
 
 }
 
@@ -27,7 +25,6 @@
     scroll-padding: 25px;
     scrollbar-color: var(--second-color) var(--object-color);
     scrollbar-width: auto;
->>>>>>> origin/HEAD
 }
 
 *::selection {
@@ -56,13 +53,10 @@ a {
     filter: drop-shadow(2px 1px 3px var(--dark-color));
 }
 
-<<<<<<< HEAD
-=======
 .logo {
     cursor: pointer;
 }
 
->>>>>>> origin/HEAD
 header,
 .container,
 footer {
@@ -75,19 +69,14 @@ footer {
 
 header {
     border-radius: 0 0 10px 10px;
-<<<<<<< HEAD
-=======
     position: sticky;
     top: 0;
->>>>>>> origin/HEAD
 }
 
 footer {
     border-radius: 10px 10px 0 0;
 }
 
-<<<<<<< HEAD
-=======
 .imgLibroPagina {
     grid-area: libro;
 }
@@ -176,7 +165,6 @@ form>div>label {
 
 }
 
->>>>>>> origin/HEAD
 /* >------------------[Laptop]------------------< */
 @media screen and (min-width: 1024px) {
 
@@ -211,13 +199,10 @@ form>div>label {
         border-radius: 10px 10px 0 0;
     }
 
-<<<<<<< HEAD
-=======
     #sinLupa {
         gap: 70%;
     }
 
->>>>>>> origin/HEAD
 
     .logo {
         width: 5em;
@@ -383,10 +368,7 @@ form>div>label {
         align-items: center;
         width: 100%;
         height: 80%;
-<<<<<<< HEAD
-=======
         background-color: green;
->>>>>>> origin/HEAD
     }
 
     .imgLibro:hover {
@@ -395,20 +377,12 @@ form>div>label {
         transition: 1s;
     }
 
-<<<<<<< HEAD
-    #tituloHover{
-=======
     #tituloHover {
->>>>>>> origin/HEAD
         position: absolute;
         justify-self: center;
     }
 
-<<<<<<< HEAD
-    #sinopsisHover{
-=======
     #sinopsisHover {
->>>>>>> origin/HEAD
         position: absolute;
     }
 
@@ -420,8 +394,6 @@ form>div>label {
         height: 20%;
     }
 
-<<<<<<< HEAD
-=======
     /* Pagina Libro */
     #bodyLibro {
         display: flex;
@@ -655,16 +627,11 @@ form>div>label {
         min-width: 20vh;
     }
 
->>>>>>> origin/HEAD
 }
 
 /* >------------------[Tablet]------------------< */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/HEAD
     .body {
         display: flex;
         flex-direction: column;
@@ -690,22 +657,15 @@ form>div>label {
         min-width: 768px;
     }
 
-<<<<<<< HEAD
-=======
     header {
         justify-content: space-between;
     }
 
->>>>>>> origin/HEAD
     .logo {
         width: 5em;
         height: 5em;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .filtros {
         float: left;
         border: none;
@@ -727,21 +687,13 @@ form>div>label {
         box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
         right: 10px;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .dropdown:hover .dropdown-content,
     .dropdown:active .dropdown-content,
     .dropdown:focus .dropdown-content {
         display: block;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .dropdown-content a,
     .dropdown-content p,
     .dropdown-content h3 {
@@ -751,19 +703,11 @@ form>div>label {
         padding: 5px;
         text-decoration: none;
     }
-<<<<<<< HEAD
-    
-    .dropdown-content a:hover {
-        text-shadow: 1px 1px 2px var(--main-color);
-    }
-    
-=======
 
     .dropdown-content a:hover {
         text-shadow: 1px 1px 2px var(--main-color);
     }
 
->>>>>>> origin/HEAD
     .rightSide {
         width: 100%;
         max-width: 50px;
@@ -773,38 +717,22 @@ form>div>label {
         align-items: center;
         margin-left: 65%;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .search {
         display: flex;
         flex-direction: row;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .lupa {
         width: 1em;
         height: 1em;
         margin: 0 .5em;
     }
-<<<<<<< HEAD
-    
-    .lupa:hover {
-        filter: drop-shadow(3px 1px 4px var(--object-color));
-    }
-    
-=======
 
     .lupa:hover {
         filter: drop-shadow(3px 1px 4px var(--object-color));
     }
 
->>>>>>> origin/HEAD
     #searchInput {
         margin: 0 1em;
         background-color: transparent;
@@ -818,21 +746,13 @@ form>div>label {
         outline: none !important;
         border: 1px solid var(--dark-color);
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .profile {
         width: 4em;
         height: 4em;
         border-radius: 40%;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     /* Container */
     .container {
         background-color: var(--main-color);
@@ -844,13 +764,8 @@ form>div>label {
         max-height: 2500px;
         min-height: 1500px;
     }
-<<<<<<< HEAD
-    
-    
-=======
 
 
->>>>>>> origin/HEAD
     /* Footer */
     footer {
         display: flex;
@@ -858,28 +773,12 @@ form>div>label {
         text-align: justify;
         padding: .5em 0 1em 0;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .texto {
         width: 10%;
         max-width: 1023px;
         min-width: 350px;
     }
-<<<<<<< HEAD
-    
-    .nuestrosNombres {
-        margin-right: 5em;
-    }
-    
-    .mail {
-        margin-left: 5em;
-    }
-    /* PAGINA PRINCIPAL */
-
-=======
 
     .nuestrosNombres {
         margin-right: 5em;
@@ -890,7 +789,6 @@ form>div>label {
     }
 
     /* PAGINA PRINCIPAL */
->>>>>>> origin/HEAD
     .containerIndex {
         display: grid;
         grid-template-columns: repeat(3, minmax(1px, 1fr));
@@ -927,10 +825,7 @@ form>div>label {
         align-items: center;
         width: 100%;
         height: 80%;
-<<<<<<< HEAD
-=======
         background-color: green;
->>>>>>> origin/HEAD
     }
 
     .imgLibro:hover {
@@ -947,8 +842,6 @@ form>div>label {
         height: 20%;
     }
 
-<<<<<<< HEAD
-=======
     #bodyLibro {
         display: flex;
         flex-direction: column;
@@ -1190,20 +1083,16 @@ form>div>label {
         grid-template-rows: repeat(8, 1fr);
     }
 
->>>>>>> origin/HEAD
 }
 
 /* >------------------[Mobile]------------------< */
 @media screen and (max-width: 767px) {
 
-<<<<<<< HEAD
-=======
 
     :root {
         scrollbar-width: none;
     }
 
->>>>>>> origin/HEAD
     .body {
         overflow-x: hidden;
         display: flex;
@@ -1233,15 +1122,9 @@ form>div>label {
         min-height: 75px;
         border-radius: 0;
     }
-<<<<<<< HEAD
-    
-    header {
-        justify-content: flex-start;
-=======
 
     header {
         justify-content: space-between;
->>>>>>> origin/HEAD
     }
 
     .logo {
@@ -1254,11 +1137,7 @@ form>div>label {
         border: none;
         background-color: transparent;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     /* Filter menu desplegable */
     .dropdown {
         display: inline-block;
@@ -1274,11 +1153,7 @@ form>div>label {
         box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
         right: 10px;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .dropdown:hover .dropdown-content,
     .dropdown:active .dropdown-content,
     .dropdown:focus .dropdown-content {
@@ -1294,19 +1169,11 @@ form>div>label {
         padding: 5px;
         text-decoration: none;
     }
-<<<<<<< HEAD
-    
-    .dropdown-content a:hover {
-        text-shadow: 1px 1px 2px var(--main-color);
-    }
-    
-=======
 
     .dropdown-content a:hover {
         text-shadow: 1px 1px 2px var(--main-color);
     }
 
->>>>>>> origin/HEAD
     .rightSide {
         display: flex;
         flex-direction: row;
@@ -1316,38 +1183,22 @@ form>div>label {
         max-width: 50px;
         margin-left: 30%;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .search {
         display: flex;
         flex-direction: row;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .lupa {
         width: 1.5em;
         height: 1.5em;
         margin: 0 .5em;
     }
-<<<<<<< HEAD
-    
-    .lupa:hover {
-        filter: drop-shadow(3px 1px 4px var(--second-color));
-    }
-    
-=======
 
     .lupa:hover {
         filter: drop-shadow(3px 1px 4px var(--second-color));
     }
 
->>>>>>> origin/HEAD
     #searchInput {
         background-color: transparent;
         border: 0;
@@ -1357,30 +1208,18 @@ form>div>label {
         padding: 0 .3em;
         visibility: hidden;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     #searchInput:focus {
         outline: none !important;
         border: 1px solid var(--dark-color);
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     .profile {
         width: 3em;
         height: 3em;
         border-radius: 40%;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/HEAD
     /* Container */
     .container {
         background-color: var(--main-color);
@@ -1392,57 +1231,6 @@ form>div>label {
         max-height: 2500px;
         min-height: 1500px;
     }
-<<<<<<< HEAD
-    
-    
-    /* Footer */
-    footer {
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: flex-start;
-        align-items: space-around;
-        text-align: justify;
-        min-height: 150px;
-        max-height: none;
-        gap: .5em;
-    }
-    
-    .texto {
-        width: 10%;
-        max-width: 767px;
-        min-width: 250px;
-    }
-    
-    .nuestrosNombres {
-        display: flex;
-        flex-direction: column;
-        padding-right: 2em;
-        gap: .5em;
-    }
-    
-    .mail {
-        float: left;
-    }
-
-    /* PAGINA PRINCIPAL */
-    .containerIndex {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(1px, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(30vh, 40vh));
-        align-items: center;
-        row-gap: 0;
-    }
-
-    .libro {
-        display: flex;
-        flex-direction: column;
-        width: 17vh;
-        height: 25vh;
-        color: white;
-        justify-self: center;
-    }
-
-=======
 
 
     /* Footer */
@@ -1492,7 +1280,6 @@ form>div>label {
         justify-self: center;
     }
 
->>>>>>> origin/HEAD
     .libro:hover {
         width: 25vh;
         height: 35vh;
@@ -1511,10 +1298,7 @@ form>div>label {
         align-items: center;
         width: 100%;
         height: 80%;
-<<<<<<< HEAD
-=======
         background-color: green;
->>>>>>> origin/HEAD
     }
 
     .imgLibro:hover {
@@ -1531,9 +1315,6 @@ form>div>label {
         height: 20%;
     }
 
-<<<<<<< HEAD
-
-=======
     /* Pagina Libro */
     #bodyLibro {
         display: flex;
@@ -1761,6 +1542,5 @@ form>div>label {
             grid-template-columns: repeat(1, 20vw);
             grid-template-rows: repeat(auto, 1fr);
         }
->>>>>>> origin/HEAD
 
 }

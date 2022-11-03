@@ -1,12 +1,3 @@
-<?php
-include 'dbcon.php';
-// SELECT prestatu
-$nireKonts = $nirePDO->prepare('SELECT * FROM Libros;');
-// Kontsulta exekutatu
-$nireKonts->execute();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +16,18 @@ $nireKonts->execute();
             <th>Lenguaiak</th>
             <th>Formatua</th>
             <th>Etiketak</th>
-            <!-- <th>Irudia</th> -->
+            <th>Irudia</th>
             <th>Egoera</th>
             <th>Mota</th>
             <td></td>
             <td></td>
         </tr>
-    <?php foreach ($nireKonts as $key => $balorea): ?> 
+        <?php
+        include 'conn.php';
+        // SELECT prestatu
+        $query = $conn->query('SELECT * FROM Libros ORDER BY titulo DESC;');
+        if($query->num_rows > 0){
+            while($balorea = $query->fetch_assoc()) { ?>
         <tr>
             <td><?= $balorea['titulo']; ?></td>
            <td><?= $balorea['escritor']; ?></td>
@@ -39,13 +35,15 @@ $nireKonts->execute();
            <td><?= $balorea['idiomas']; ?></td>
            <td><?= $balorea['formato']; ?></td>
            <td><?= $balorea['etiquetas']; ?></td>
+           <td><img src="data:image/png;base64,<?php echo base64_encode($balorea['imagen']); ?>" alt="argazkia" width="120" height="180" /></td>
            <td><?= $balorea['estado']; ?></td>
            <td><?= $balorea['tipo']; ?></td>
            <!-- Aurrerago erabiliko da eliminatzeko edo aldatzeko erregistroa -->
            <td><a class="button" href="aldaketaL.php?titulo=<?= $balorea['titulo'] ?>">Aldatu</a></td>
            <td><a class="button" href="ezabatuL.php?titulo=<?= $balorea['titulo'] ?>">Ezabatu</a></td>
         </tr>
-    <?php endforeach; ?>
+        <?php } ?>
+    <?php } ?>
     </table>
 </body>
 </html>

@@ -16,6 +16,9 @@ $tipo = isset($_REQUEST['tipo']) ? $_REQUEST['tipo'] : null;
 
 // Konprobatu POST-etik datuak datozen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+        $estado = $_POST['estado'];
+     
     // Preparatu UPDATE
     $nireUpdate = $nirePDO->prepare("UPDATE `Libros` SET `titulo` = '$titulo', `escritor` = '$escritor', `sinopsis` = '$sinopsis',`idiomas` = '$idiomas',`formato` = '$formato', `etiquetas` = '$etiquetas', `estado` = '$estado', `tipo` = '$tipo' WHERE `titulo` = '$titulo'");
     // Exekutatu UPDATE datuekin
@@ -23,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // libros.php-ra bialdu
     header('Location: libros.php');
 } else {
-    echo 'hola';
+    
     // Preparatu SELECT
     $nireKonts = $nirePDO->prepare('SELECT * FROM `Libros` WHERE `titulo` = :titulo;');
     // Exekutatu kontsulta
@@ -41,10 +44,12 @@ $datuak = $nireKonts->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Aldatu Erabiltzaileak</title>
 </head>
+
 <body>
     <form method="post">
         <p>
@@ -66,14 +71,18 @@ $datuak = $nireKonts->fetch();
         <p>
             <label for="formato">formato</label>
             <input id="formato" type="text" name="formato" value="<?= $datuak['formato'] ?>">
-        </p>    
+        </p>
         <p>
             <label for="etiquetas">etiquetas</label>
             <input id="etiquetas" type="text" name="etiquetas" value="<?= $datuak['etiquetas'] ?>">
         </p>
         <p>
             <label for="estado">estado</label>
-            <input id="estado" type="text" name="estado" value="<?= $datuak['estado'] ?>">
+            <select name="estado" id="lang">
+                <option value="supervision">supervision</option>
+                <option value="Aprobado">Aprobado</option>
+                <option value="Denegado">Denegado</option>
+            </select>
         </p>
         <p>
             <label for="tipo">tipo</label>
@@ -85,4 +94,5 @@ $datuak = $nireKonts->fetch();
         </p>
     </form>
 </body>
+
 </html>

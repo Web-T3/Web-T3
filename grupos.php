@@ -1,12 +1,3 @@
-<?php
-include 'dbcon.php';
-// SELECT prestatu
-$nireKonts = $nirePDO->prepare('SELECT * FROM Grupos;');
-// Kontsulta exekutatu
-$nireKonts->execute();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +17,13 @@ $nireKonts->execute();
             <td></td>
             <td></td>
         </tr>
-    <?php foreach ($nireKonts as $key => $balorea): ?> 
+        <?php
+        include 'conn.php';
+        // SELECT prestatu
+        $query = $conn->query('SELECT * FROM Grupos ORDER BY profesor DESC;');
+        if($query->num_rows > 0){
+            while($balorea = $query->fetch_assoc()) { 
+            ?>
         <tr>
             <td><?= $balorea['gid']; ?></td>
            <td><?= $balorea['profesor']; ?></td>
@@ -35,7 +32,8 @@ $nireKonts->execute();
            <td><a class="button" href="aldaketaG.php?gid=<?= $balorea['gid'] ?>">Aldatu</a></td>
            <td><a class="button" href="ezabatuG.php?gid=<?= $balorea['gid'] ?>">Ezabatu</a></td>
         </tr>
-    <?php endforeach; ?>
+        <?php } ?>
+    <?php } ?>
     </table>
 </body>
 </html>

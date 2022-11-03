@@ -1,0 +1,49 @@
+/* DEFAULT */
+
+@font-face {
+    font-family: "Oxygen";
+    src: url("../Multimedia/Fuentes/Oxygen/Oxygen-Regular.ttf")
+}
+
+* {
+    --main-color: #f5e1ce;
+    --second-color: #b08e6b;
+    --object-color: #e8c39e;
+    --text-color: #ffffff;
+    --dark-color: #7a5c3c;
+    --black-color: #191919;
+    --white-color: white;
+    font-family: 'Oxygen';
+    margin: 0;
+    padding: 0;
+}
+
+*::selection {
+    background-color: var(--main-color);
+    color: var(--second-color);
+}
+
+body {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    /* background-color: var(--second-color); */
+    background-image: url(../Multimedia/bg_image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form {
+    width: 60%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 10px;
+}
