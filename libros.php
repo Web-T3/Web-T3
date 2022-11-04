@@ -25,7 +25,7 @@
         <?php
         include 'conn.php';
         // SELECT prestatu
-        $query = $conn->query('SELECT * FROM Libros ORDER BY titulo DESC;');
+        $query = $conn->query('SELECT * FROM Libros ORDER BY titulo ASC;');
         if($query->num_rows > 0){
             while($balorea = $query->fetch_assoc()) { ?>
         <tr>

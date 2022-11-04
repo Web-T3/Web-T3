@@ -20,7 +20,7 @@
         <?php
         include 'conn.php';
         // SELECT prestatu
-        $query = $conn->query('SELECT * FROM Grupos ORDER BY profesor DESC;');
+        $query = $conn->query('SELECT * FROM Grupos ORDER BY profesor ASC;');
         if($query->num_rows > 0){
             while($balorea = $query->fetch_assoc()) { 
             ?>

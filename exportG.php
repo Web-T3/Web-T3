@@ -2,7 +2,7 @@
 
 require_once 'conn.php';
 
-$query = $conn->query("SELECT * FROM Grupos ORDER BY profesor DESC;");
+$query = $conn->query("SELECT * FROM Grupos ORDER BY profesor ASC;");
 
 if($query->num_rows > 0){
     $delimiter = ",";

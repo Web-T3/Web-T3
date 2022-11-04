@@ -1,3 +1,16 @@
+<?php
+    include 'dbcon.php';
+    // SELECT prestatu
+    session_start();
+    $miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
+    // Kontsulta exekutatu
+    $miConsulta->execute();
+    $valM = isset($_SESSION['mail']);
+    $valN = isset($_SESSION['nickname']);
+    $valP = isset($_SESSION['contrasenya']);
+    $valR = isset($_SESSION['rol']);
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,12 +42,32 @@
             <div class="dropdown">
                 <img src="Multimedia/no-profile.jpg" alt="" class="profile">
                 <div class="dropdown-content">
-                    <p>Nickname</p>
-                    <a href="addLibro.html">Añadir Libro</a>
-                    <a href="miFicha.html">Mi Ficha</a>
-                    <a href="miPerfil.html">Perfil</a>
-                    <a href="admin.html">Admin</a>
-                    <a href="#">Cerrar Sesion</a>
+                <?php
+                        if ($_SESSION['rol'] == "invitado") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
+                            echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
+                        } else if ($_SESSION['rol'] == "irakaslea") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
+                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
+                            echo '<a href="miFicha.php">Zure fitxa</a>';
+                            echo '<a href="miPerfil.php">Profila</a>';
+                            echo '<a href="admin.php">Admin</a>';
+                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
+                        } else if ($_SESSION['rol'] == "ikaslea") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
+                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
+                            echo '<a href="miFicha.php">Zure fitxa</a>';
+                            echo '<a href="miPerfil.php">Profila</a>';
+                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
+                        } else if ($_SESSION['rol'] == "admin") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
+                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
+                            echo '<a href="miFicha.php">Zure fitxa</a>';
+                            echo '<a href="miPerfil.php">Profila</a>';
+                            echo '<a href="admin.php">Admin</a>';
+                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -44,7 +77,7 @@
     <div class="container containerPerfil">
 
         <div class="nick">
-            <img src="/Multimedia/no-profile.jpg" alt="">
+            <img src="Multimedia/no-profile.jpg" alt="">
             <h1 class="nickname"> Nickname </h1>
         </div>
         

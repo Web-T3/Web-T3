@@ -2,7 +2,7 @@
 
 require_once 'conn.php';
 
-$query = $conn->query("SELECT * FROM Usuarios ORDER BY nickname DESC;");
+$query = $conn->query("SELECT * FROM Usuarios ORDER BY nickname ASC;");
 
 if($query->num_rows > 0){
     $delimiter = ",";

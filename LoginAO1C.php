@@ -12,6 +12,9 @@
     <body>
         <?php
             if(isset($_POST['inv'])){
+                session_start();
+                $_SESSION['nickname'] = "inv";
+                $_SESSION['rol'] = "invitado";
                 header('Location: index.php');
                 die();
             }
@@ -32,7 +35,7 @@
             if($pass == $passc){
             // Preparatu INSERT
             
-            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
+            $miInsert = $nirePDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
             array(
@@ -71,7 +74,7 @@
                 $datubasea = "e1webgune";
 
                  // Hauek formulariotik hartzen ditugu
-                $izena = isset($_REQUEST['user']) ? $_REQUEST['user'] : null;
+                $nick = isset($_REQUEST['user']) ? $_REQUEST['user'] : null;
                 $pasahitz = isset($_REQUEST['pass']) ? $_REQUEST['pass'] : null;
               
 
@@ -80,7 +83,7 @@
                     // ezarri PDO exception modura
                     $konexioa->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // sql 
-                    $sql = "SELECT contrasenya FROM Usuarios WHERE nickname= '$izena' ";
+                    $sql = "SELECT contrasenya FROM Usuarios WHERE nickname= '$nick' ";
                     $emaitza = $konexioa->query($sql);
                     $datuak = $emaitza->fetchAll();
                     if(!isset($datuak)){
@@ -93,7 +96,17 @@
                     if ($pasahitzZuzena == $pasahitz) {
                         // Zuzenak badira, saioa hasiko dugu sartutako datuekin
                         session_start();
-                        $_SESSION['mail'] = $_REQUEST['mail'];
+                        $sqlemail = "SELECT mail FROM Usuarios WHERE nickname = '$nick'";
+                        $sqlrol = "SELECT rol FROM Usuarios WHERE nickname = '$nick'";
+                        $eemail = $konexioa->query($sqlemail);
+                        $demail = $eemail->fetchAll();
+                        $erol = $konexioa->query($sqlrol);
+                        $drol = $erol->fetchAll();
+                        $email = $demail[0]['mail'];
+                        $rol = $drol[0]['rol'];
+                        $_SESSION['mail']=$email;
+                        $_SESSION['rol']=$rol;
+                        $_SESSION['nickname']=$nick;
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();
