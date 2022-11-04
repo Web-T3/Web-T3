@@ -124,6 +124,16 @@ footer {
     grid-area: contra;
 }
 
+.formPerfil {
+    grid-area: formP;
+}
+
+.formPerfil>button {
+    grid-area: buttonP;
+}
+
+
+
 /* Pagina Añadir Libro */
 .containerAddLibro,
 .containerAddLibro>form {
@@ -147,7 +157,8 @@ footer {
     font-size: 1em;
     gap: .5em;
 }
-.etiquetas>label{
+
+.etiquetas>label {
     display: flex;
 }
 
@@ -567,8 +578,22 @@ form>div>label {
 
 
     /* Pagina Mi Perfil */
-
     .containerPerfil {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 10% repeat(4, 1fr);
+
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " . formP formP formP formP formP formP . "
+            " . formP formP formP formP formP formP . "
+            " . formP formP formP formP formP formP . ";
+
+        overflow: hidden;
+    }
+
+
+    .formPerfil {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(4, 1fr);
@@ -576,11 +601,13 @@ form>div>label {
         grid-template-areas:
             ". . nn nn nn nn . ."
             " . dp dp dp contra contra contra . "
-            " . dp dp dp contra contra contra . "
-            " . dp dp dp contra contra contra . ";
+            ". . . buttonP buttonP . . ."
+            ". . . . . . . .";
 
+        gap: 1em;
         overflow: hidden;
     }
+
 
     .nick {
         display: flex;
@@ -616,6 +643,26 @@ form>div>label {
 
     .inputPerfil:active {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
+    }
+
+    .formPerfil>button {
+        height: 30%;
+        color: var(--main-color);
+        background-color: var(--dark-color);
+        box-shadow: 0 6px 0 var(--black-color);
+        border: 1px solid var(--dark-color);
+        border-radius: .5em;
+        font-size: 2em;
+        font-weight: bold;
+        transition: .5s;
+    }
+
+    .formPerfil>button:hover {
+        transform: translateY(5px);
+        box-shadow: 0 3px 0 var(--black-color);
+        background-color: var(--main-color);
+        color: var(--dark-color);
+        transition: .5s;
     }
 
 
@@ -930,6 +977,7 @@ form>div>label {
             ". containerReseñas containerReseñas containerReseñas ."
             ". containerReseñas containerReseñas containerReseñas .";
     }
+    
 
     .containerLibrosLeidos {
         display: flex;
@@ -1034,10 +1082,25 @@ form>div>label {
 
         grid-template-areas:
             ". . nn nn nn nn . ."
-            " . dp dp dp contra contra contra . "
-            " . dp dp dp contra contra contra . "
-            " . dp dp dp contra contra contra . ";
+            " . formP formP formP formP formP formP . "
+            " . formP formP formP formP formP formP . "
+            " . formP formP formP formP formP formP . ";
 
+        overflow: hidden;
+    }
+
+    .formPerfil {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 1% repeat(4, 1fr);
+
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " dp dp dp dp contra contra contra contra "
+            ". . . buttonP buttonP . . ."
+            ". . . . . . . .";
+
+        gap: 1em;
         overflow: hidden;
     }
 
@@ -1059,7 +1122,7 @@ form>div>label {
         background-color: var(--main-color);
         border: none;
         border-radius: 5px;
-        width: 40%;
+        width: 70%;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
         padding: 0 5px;
         margin: .5em;
@@ -1075,6 +1138,26 @@ form>div>label {
 
     .inputPerfil:active {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
+    }
+
+    .formPerfil>button {
+        height: 15%;
+        color: var(--main-color);
+        background-color: var(--dark-color);
+        box-shadow: 0 6px 0 var(--black-color);
+        border: 1px solid var(--dark-color);
+        border-radius: .3em;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: .5s;
+    }
+
+    .formPerfil>button:hover {
+        transform: translateY(5px);
+        box-shadow: 0 3px 0 var(--black-color);
+        background-color: var(--main-color);
+        color: var(--dark-color);
+        transition: .5s;
     }
 
     /* Pagina Añadir Libro */
@@ -1478,12 +1561,31 @@ form>div>label {
     .containerPerfil {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(2, 10%);
+        grid-template-rows:  10% repeat(2,1fr);
 
         grid-template-areas:
             ". . nn nn nn nn . ."
-            " . dp dp dp contra contra contra . ";
+            " . formP formP formP formP formP formP . ";
 
+        overflow: hidden;
+    }
+
+    .containerPerfil>div:first-child{
+        margin-top: 10%;
+    }
+
+    .formPerfil {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 1% repeat(4, 1fr);
+
+        grid-template-areas:
+            ". . nn nn nn nn . ."
+            " dp dp dp dp contra contra contra contra "
+            ". . . buttonP buttonP . . ."
+            ". . . . . . . .";
+
+        gap: 1em;
         overflow: hidden;
     }
 
@@ -1537,10 +1639,30 @@ form>div>label {
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
     }
 
-        /* Pagina Añadir Libro */
-        .etiquetas {
-            grid-template-columns: repeat(1, 20vw);
-            grid-template-rows: repeat(auto, 1fr);
-        }
+    .formPerfil>button {
+        height: 20%;
+        color: var(--main-color);
+        background-color: var(--dark-color);
+        box-shadow: 0 6px 0 var(--black-color);
+        border: 1px solid var(--dark-color);
+        border-radius: .3em;
+        font-size: 1em;
+        font-weight: bold;
+        transition: .5s;
+    }
+
+    .formPerfil>button:hover {
+        transform: translateY(5px);
+        box-shadow: 0 3px 0 var(--black-color);
+        background-color: var(--main-color);
+        color: var(--dark-color);
+        transition: .5s;
+    }
+
+    /* Pagina Añadir Libro */
+    .etiquetas {
+        grid-template-columns: repeat(1, 20vw);
+        grid-template-rows: repeat(auto, 1fr);
+    }
 
 }
