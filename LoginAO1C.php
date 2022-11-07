@@ -27,7 +27,7 @@
             $pass = isset($_REQUEST['pswdr']) ? $_REQUEST['pswdr'] : null;
             $passc = isset($_REQUEST['pswdc']) ? $_REQUEST['pswdc'] : null;
             $age = isset($_REQUEST['age']) ? $_REQUEST['age'] : null;
-            $rol = 'Invitado';
+            $rol = 'invitado';
             $group = '1';
             $rbook = '-';
 
@@ -98,15 +98,30 @@
                         session_start();
                         $sqlemail = "SELECT mail FROM Usuarios WHERE nickname = '$nick'";
                         $sqlrol = "SELECT rol FROM Usuarios WHERE nickname = '$nick'";
+                        $sqlnom = "SELECT nombre FROM Usuarios WHERE nickname = '$nick'";
+                        $sqlape = "SELECT apellido FROM Usuarios WHERE nickname = '$nick'";
+                        $sqlage = "SELECT edad FROM Usuarios WHERE nickname = '$nick'";
                         $eemail = $konexioa->query($sqlemail);
                         $demail = $eemail->fetchAll();
                         $erol = $konexioa->query($sqlrol);
                         $drol = $erol->fetchAll();
+                        $enom = $konexioa->query($sqlnom);
+                        $dnom = $enom->fetchAll();
+                        $eape = $konexioa->query($sqlape);
+                        $dape = $eape->fetchAll();
+                        $eage = $konexioa->query($sqlage);
+                        $dage = $eage->fetchAll();
                         $email = $demail[0]['mail'];
                         $rol = $drol[0]['rol'];
+                        $nom = $dnom[0]['nombre'];
+                        $ape = $dape[0]['apellido'];
+                        $age = $dage[0]['edad'];
                         $_SESSION['mail']=$email;
                         $_SESSION['rol']=$rol;
                         $_SESSION['nickname']=$nick;
+                        $_SESSION['nombre']=$nom;
+                        $_SESSION['apellido']=$ape;
+                        $_SESSION['edad']=$age;
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();

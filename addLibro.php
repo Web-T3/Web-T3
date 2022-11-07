@@ -158,7 +158,7 @@
             </div>
 
             <!-- Boton enviar -->
-            <button type="submit" name="addL" value="submit">Enviar</button>
+            <button type="submit" name="addL" value="submit">Bidali</button>
 
         </form>
 

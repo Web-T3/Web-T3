@@ -8,14 +8,13 @@ $contrasenya = isset($_REQUEST['contrasenya']) ? $_REQUEST['contrasenya'] : null
 $edad = isset($_REQUEST['edad']) ? $_REQUEST['edad'] : null;
 $rol = isset($_REQUEST['rol']) ? $_REQUEST['rol'] : null;
 $grupo = isset($_REQUEST['grupo']) ? $_REQUEST['grupo'] : null;
-$libro = isset($_REQUEST['lib_leido']) ? $_REQUEST['lib_leido'] : null;
 
 // Datu basera konektatu
 include 'dbcon.php';
 // Konprobatu POST-etik datuak datozen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Preparatu UPDATE
-    $nireUpdate = $nirePDO->prepare("UPDATE `Usuarios` SET `nickname` = '$nickname', `nombre` = '$nombre', `apellido` = '$apellido', `contrasenya` = '$contrasenya', `edad` = '$edad', `rol` = '$rol', `grupo` = $grupo,  `lib_leido` = '$libro' WHERE `mail` = '$mail'");
+    $nireUpdate = $nirePDO->prepare("UPDATE `Usuarios` SET `nickname` = '$nickname', `nombre` = '$nombre', `apellido` = '$apellido', `contrasenya` = '$contrasenya', `edad` = '$edad', `rol` = '$rol', `grupo` = $grupo WHERE `mail` = '$mail'");
     // Exekutatu UPDATE datuekin
     $nireUpdate->execute();
     // usuarios.php-ra bialdu
@@ -70,10 +69,6 @@ $datuak = $nireKonts->fetch();
         <p>
             <label for="grupo">Taldea</label>
             <input id="grupo" type="text" name="grupo" value="<?= $datuak['grupo'] ?>">
-        </p>
-        <p>
-            <label for="lib_leido">Liburuak</label>
-            <input id="lib_leido" type="text" name="lib_leido" value="<?= $datuak['lib_leido'] ?>">
         </p>
         <p>
             <input type="hidden" name="mail" value="<?= $mail ?>">
