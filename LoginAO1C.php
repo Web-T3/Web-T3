@@ -15,7 +15,7 @@
         $rnom = 'rolCookie';
         $enom = 'erabCookie';
         //Cookie existitzen badira hartuko eta hilko ditu
-        if (isset($_COOKIE['rolCookie'] && $_COOKIE['erabCookie'])) {
+        if (isset($_COOKIE['rolCookie']) && isset($_COOKIE['erabCookie'])) {
             setcookie($rnom, "KILLER", time()-60);
             setcookie($enom, "KILLER", time()-60);
         }
