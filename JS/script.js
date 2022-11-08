@@ -24,7 +24,7 @@ function CargaEventos() {
 }
 
 var Index = () => {
-  location.href = "../index.html"
+  location.href = "../index.php"
 }
 
 var Busqueda = () => {

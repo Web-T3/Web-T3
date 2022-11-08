@@ -46,7 +46,7 @@
                 <img src="Multimedia/no-profile.jpg" alt="" class="profile">
                 <div class="dropdown-content">
                     <?php
-                        if ($_SESSION['rol'] == "invitado") {
+                        if ($_SESSION['rol'] == "invitado" || $_SESSION['rol'] == "") {
                             echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
                         } else if ($_SESSION['rol'] == "irakaslea") {
