@@ -22,18 +22,9 @@
         //Erregistro aldagaiak, ordenean: Gonbidatua, Erregistroa, Sartu
             if(isset($_POST['inv'])){
                 session_start();
+                //Saioa hasi eta gero, gordeko ditu zerbitzarian datuak
                 $_SESSION['nickname'] = "inv";
                 $_SESSION['rol'] = "invitado";
-                //Aldagaiak jartzen ditu sartzeko gonbidatu bezala
-                //Orain Cookie bezala sartzeko aldagaiak
-                $rval = $_SESSION['rol'];
-                $eval = $_SESSION['nickname'];
-                $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
-                $pth = '/cookies/';
-                //Cookie sorketa
-                setcookie($rnom, $rval, $exp, $pth);
-                setcookie($enom, $eval, $exp, $pth);
-                //Orrialde printizapalara eramango du
                 header('Location: index.php');
                 die();
             }
