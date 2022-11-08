@@ -12,12 +12,10 @@
     <body>
         <?php
         //Cookie izenen aldagaiak konstanteak
-        $rnom = 'rolCookie';
-        $enom = 'erabCookie';
+        $snom = 'sCookie';
         //Cookie existitzen badira hartuko eta hilko ditu
-        if (isset($_COOKIE['rolCookie']) && isset($_COOKIE['erabCookie'])) {
-            setcookie($rnom, "KILLER", time()-60);
-            setcookie($enom, "KILLER", time()-60);
+        if (isset($_COOKIE['sCookie'])) {
+            setcookie($snom, "KILLER", time()-60);
         }
         //Erregistro aldagaiak, ordenean: Gonbidatua, Erregistroa, Sartu
             if(isset($_POST['inv'])){
@@ -65,22 +63,20 @@
             session_start();
             $_SESSION['mail'] = $_REQUEST['mail'];
             //Cookie sorketa
-            $rval = $rol;
-            $eval = $_SESSION['nickname'];
+            $eval = $nick;
             //Baloreak sartu eta gero
             //Ezabaketa denbora
             $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
             //Non gordeko den
-            $pth = '/cookies/';
+            $pth = '/';
             //Sortzeko aldagaiak
             setcookie($rnom, $rval, $exp, $pth);
-            setcookie($enom, $eval, $exp, $pth);
+            // setcookie($enom, $eval, $exp, $pth);
             // Orrialde segurura bidaltzen dugu
             header('Location: index.php');
             die();
             }else{
-                echo '
-                <script>
+                echo '<script>
                 document.getElementById("ERROR").innerHTML = "ERROR: Pasahitzak ez dira berdinak.";
                 </script>';
             }
@@ -144,16 +140,15 @@
                         $_SESSION['apellido']=$ape;
                         $_SESSION['edad']=$age;
                         //Cookie sorketa
-                        $rval = $_SESSION['rol'];
-                        $eval = $_SESSION['nickname'];
+                        $sval = $rol;
                         //Baloreak sartu eta gero
                         //Ezabaketa denbora
                         $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
                         //Non gordeko den
-                        $pth = '/cookies/';
+                        $pth = '/';
                         //Sortzeko aldagaiak
-                        setcookie($rnom, $rval, $exp, $pth);
-                        setcookie($enom, $eval, $exp, $pth);
+                        setcookie($snom, $sval, $exp, $pth);
+                        // setcookie($enom, $eval, $exp, $pth);
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();

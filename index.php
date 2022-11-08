@@ -50,25 +50,27 @@
                             echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
                         } else if ($_COOKIE['rolCookie'] == "irakaslea") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
                             echo '<a href="admin.php">Admin</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
                         } else if ($_COOKIE['rolCookie'] == "ikaslea") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
                         } else if ($_COOKIE['rolCookie'] == "admin") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
                             echo '<a href="admin.php">Admin</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
+                            // echo "<script>console.log('Debug Objects: " . $_COOKIE['erabCookie'] . "' );</script>";
+                            echo "<script>console.log('Debug Objects: " . $_COOKIE['rolCookie'] . "' );</script>";
                         }
                     ?>
                 </div>
