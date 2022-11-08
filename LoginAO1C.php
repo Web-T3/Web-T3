@@ -11,10 +11,29 @@
     </head>
     <body>
         <?php
+        //Cookie izenen aldagaiak konstanteak
+        $rnom = 'rolCookie';
+        $enom = 'erabCookie';
+        //Cookie existitzen badira hartuko eta hilko ditu
+        if (isset($_COOKIE['rolCookie'] && $_COOKIE['erabCookie'])) {
+            setcookie($rnom, "KILLER", time()-60);
+            setcookie($enom, "KILLER", time()-60);
+        }
+        //Erregistro aldagaiak, ordenean: Gonbidatua, Erregistroa, Sartu
             if(isset($_POST['inv'])){
                 session_start();
                 $_SESSION['nickname'] = "inv";
                 $_SESSION['rol'] = "invitado";
+                //Aldagaiak jartzen ditu sartzeko gonbidatu bezala
+                //Orain Cookie bezala sartzeko aldagaiak
+                $rval = $_SESSION['rol'];
+                $eval = $_SESSION['nickname'];
+                $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
+                $pth = '/cookies/';
+                //Cookie sorketa
+                setcookie($rnom, $rval, $exp, $pth);
+                setcookie($enom, $eval, $exp, $pth);
+                //Orrialde printizapalara eramango du
                 header('Location: index.php');
                 die();
             }
@@ -54,6 +73,17 @@
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
             session_start();
             $_SESSION['mail'] = $_REQUEST['mail'];
+            //Cookie sorketa
+            $rval = $rol;
+            $eval = $_SESSION['nickname'];
+            //Baloreak sartu eta gero
+            //Ezabaketa denbora
+            $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
+            //Non gordeko den
+            $pth = '/cookies/';
+            //Sortzeko aldagaiak
+            setcookie($rnom, $rval, $exp, $pth);
+            setcookie($enom, $eval, $exp, $pth);
             // Orrialde segurura bidaltzen dugu
             header('Location: index.php');
             die();
@@ -122,6 +152,17 @@
                         $_SESSION['nombre']=$nom;
                         $_SESSION['apellido']=$ape;
                         $_SESSION['edad']=$age;
+                        //Cookie sorketa
+                        $rval = $_SESSION['rol'];
+                        $eval = $_SESSION['nickname'];
+                        //Baloreak sartu eta gero
+                        //Ezabaketa denbora
+                        $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
+                        //Non gordeko den
+                        $pth = '/cookies/';
+                        //Sortzeko aldagaiak
+                        setcookie($rnom, $rval, $exp, $pth);
+                        setcookie($enom, $eval, $exp, $pth);
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();
