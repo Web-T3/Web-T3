@@ -176,6 +176,72 @@ form>div>label {
 
 }
 
+/* Pagina Añadir Libro */
+.etiquetas {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 30vw;
+    min-width: 20vh;
+}
+
+/* Pagina Admin */
+#bodyAdmin {
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+}
+
+.buttonAdmin {
+    background-color: var(--main-color);
+    border: 2px solid var(--dark-color);
+}
+
+
+.rowAdmin {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1%;
+}
+
+.rowAdmin>a {
+    width: 50%;
+}
+
+.rowAdmin>a:hover {
+    background-color: var(--dark-color);
+    border: 2px solid var(--main-color);
+    border-radius: .5em;
+    transition: .5s;
+}
+
+a {
+    font-weight: bold;
+    font-size: 200%;
+    text-align: center;
+}
+
+#exportarCSV {
+    cursor: pointer;
+}
+
+#menuDescargas {
+    display: none;
+    width: 100%;
+}
+
+.atrasAdmin {
+    cursor: pointer;
+    background-color: var(--dark-color);
+    border: 2px solid var(--main-color);
+    width: 100%;
+
+}
+
+.descargas>span {
+    font-size: .4em;
+}
+
 /* >------------------[Laptop]------------------< */
 @media screen and (min-width: 1024px) {
 
@@ -665,15 +731,6 @@ form>div>label {
         transition: .5s;
     }
 
-
-    /* Pagina Añadir Libro */
-    .etiquetas {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        width: 30vw;
-        min-width: 20vh;
-    }
-
 }
 
 /* >------------------[Tablet]------------------< */
@@ -977,7 +1034,7 @@ form>div>label {
             ". containerReseñas containerReseñas containerReseñas ."
             ". containerReseñas containerReseñas containerReseñas .";
     }
-    
+
 
     .containerLibrosLeidos {
         display: flex;
@@ -1419,7 +1476,7 @@ form>div>label {
         gap: 2em;
         grid-template-areas:
             ". titulo titulo notaLibro ."
-            ". libro libro libro  . "
+            ". libro libro libro . "
             ". sinopsis sinopsis sinopsis ."
             ". sinopsis sinopsis sinopsis ."
             ". comentarios comentarios comentarios .";
@@ -1561,7 +1618,7 @@ form>div>label {
     .containerPerfil {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows:  10% repeat(2,1fr);
+        grid-template-rows: 10% repeat(2, 1fr);
 
         grid-template-areas:
             ". . nn nn nn nn . ."
@@ -1570,7 +1627,7 @@ form>div>label {
         overflow: hidden;
     }
 
-    .containerPerfil>div:first-child{
+    .containerPerfil>div:first-child {
         margin-top: 10%;
     }
 
@@ -1663,6 +1720,21 @@ form>div>label {
     .etiquetas {
         grid-template-columns: repeat(1, 20vw);
         grid-template-rows: repeat(auto, 1fr);
+    }
+
+    .rowAdmin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttonAdmin {
+        width: 100%;
+    }
+
+    .atrasAdmin {
+        margin-left: 15%;
     }
 
 }

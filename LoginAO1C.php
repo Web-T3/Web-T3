@@ -11,13 +11,6 @@
     </head>
     <body>
         <?php
-        //Cookie izenen aldagaiak konstanteak
-        $snom = 'sCookie';
-        //Cookie existitzen badira hartuko eta hilko ditu
-        if (isset($_COOKIE['sCookie'])) {
-            setcookie($snom, "KILLER", time()-60);
-        }
-        //Erregistro aldagaiak, ordenean: Gonbidatua, Erregistroa, Sartu
             if(isset($_POST['inv'])){
                 session_start();
                 //Saioa hasi eta gero, gordeko ditu zerbitzarian datuak
@@ -62,16 +55,7 @@
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
             session_start();
             $_SESSION['mail'] = $_REQUEST['mail'];
-            //Cookie sorketa
-            $eval = $nick;
-            //Baloreak sartu eta gero
-            //Ezabaketa denbora
-            $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
-            //Non gordeko den
-            $pth = '/';
-            //Sortzeko aldagaiak
-            setcookie($rnom, $rval, $exp, $pth);
-            // setcookie($enom, $eval, $exp, $pth);
+            $email = $_SESSION['mail'];
             // Orrialde segurura bidaltzen dugu
             header('Location: index.php');
             die();
@@ -139,16 +123,6 @@
                         $_SESSION['nombre']=$nom;
                         $_SESSION['apellido']=$ape;
                         $_SESSION['edad']=$age;
-                        //Cookie sorketa
-                        $sval = $rol;
-                        //Baloreak sartu eta gero
-                        //Ezabaketa denbora
-                        $exp = time() +3600; //Egun 1 +86.400 edo (3600*24), 7 egun +604.800
-                        //Non gordeko den
-                        $pth = '/';
-                        //Sortzeko aldagaiak
-                        setcookie($snom, $sval, $exp, $pth);
-                        // setcookie($enom, $eval, $exp, $pth);
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();

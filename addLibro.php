@@ -5,7 +5,8 @@
     $miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
     // Kontsulta exekutatu
     $miConsulta->execute();
-    $valM = isset($_SESSION['mail']);
+    
+    $valM = isset($_COOKIE['sCookie']);
     $valN = isset($_SESSION['nickname']);
     $valP = isset($_SESSION['contrasenya']);
     $valR = isset($_SESSION['rol']);
@@ -44,27 +45,32 @@
                 <div class="dropdown-content">
                 <?php
                         if ($_SESSION['rol'] == "invitado" || $_SESSION['rol'] == "") {
+                            if ($_SESSION['rol'] == "") {
+                                echo '<p>inv</p>';
+                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
+                            } else {
+                                echo '<p>'.$_SESSION['nickname'].'</p>';
+                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
+                            }
+                        } else if ($_SESSION['rol'] == "irakaslea") {
                             echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                        } else if ($_COOKIE['rolCookie'] == "irakaslea") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.php">Admin</a>';
+                            echo '<a href="admin.html">Admin</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_COOKIE['rolCookie'] == "ikaslea") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
+                        } else if ($_SESSION['rol'] == "ikaslea") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_COOKIE['rolCookie'] == "admin") {
-                            echo '<p>'.$_COOKIE['erabCookie'].'</p>';
+                        } else if ($_SESSION['rol'] == "admin") {
+                            echo '<p>'.$_SESSION['nickname'].'</p>';
                             echo '<a href="addLibro.php">Bidali liburu berria</a>';
                             echo '<a href="miFicha.php">Zure fitxa</a>';
                             echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.php">Admin</a>';
+                            echo '<a href="admin.html">Admin</a>';
                             echo '<a href="LoginAO1C.php">Saioa itxi</a>';
                         }
                     ?>
