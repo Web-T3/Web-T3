@@ -1,9 +1,5 @@
 <?php
 // Aldagaiak
-$hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
-$nombreDB = 'e1webgune';
-$usuarioDB = 'admin';
-$contrasenyaDB = 'NausicaA';
 $mail = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
 $nickname = isset($_REQUEST['nickname']) ? $_REQUEST['nickname'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
@@ -15,7 +11,7 @@ $grupo = isset($_REQUEST['grupo']) ? $_REQUEST['grupo'] : null;
 $libro = isset($_REQUEST['lib_leido']) ? $_REQUEST['lib_leido'] : null;
 
 // Datu basera konektatu
-$hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
+include "CBD.php";
 $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
 
 // Konprobatu POST-etik datuak datozen

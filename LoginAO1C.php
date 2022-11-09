@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/LR.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="Multimedia/icono_arbol.png">
+    <script src="JS/scriptL.js"></script>
     <title>Register-Login</title>
     </head>
     <body>
         <?php
             if(isset($_POST['inv'])){
+                $_SESSION['nickname'] = "inv";
+                $_SESSION['rol'] = "invitado";
                 header('Location: index.php');
                 die();
             }
             if(isset($_POST['register'])){
             // Aldagaiak hartu
-            $mail = isset($_REQUEST['mailR']) ? $_REQUEST['mailR'] : null;
-            $nick = isset($_REQUEST['nicknameR']) ? $_REQUEST['nicknameR'] : null;
+            $mail = isset($_REQUEST['mail']) ? $_REQUEST['mail'] : null;
+            $nick = isset($_REQUEST['nickname']) ? $_REQUEST['nickname'] : null;
             $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : null;
             $surname = isset($_REQUEST['surname']) ? $_REQUEST['surname'] : null;
             $pass = isset($_REQUEST['pswdr']) ? $_REQUEST['pswdr'] : null;
@@ -28,18 +30,14 @@
             $group = '1';
             $rbook = '-';
 
-            // aldagaiak
-            $hostDB = 'wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com';
-            $nombreDB = 'e1webgune';
-            $usuarioDB = 'admin';
-            $contrasenyaDB = 'NausicaA';
-            // Datu basearekin konektatu
-            $hostPDO = "mysql:host=$hostDB;dbname=$nombreDB;";
+            // Datu basera konektatu
+            include "CBD.php";
             $miPDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
             if($pass == $passc){
+          
             // Preparatu INSERT
+            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contraseña`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             
-            $miInsert = $miPDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo, :lib_leido)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
             array(
@@ -71,19 +69,15 @@
             }
             if (isset($_POST['login'])) { //egiaztatzen dugu datuak jaso ditugula
 
-                // Aldagaia hauek datu basetik irakurriko ditugu
-                $zerbitzaria = "wger1dbvpc1.clfizgthaamq.us-east-1.rds.amazonaws.com";
-                $erabiltzailea ="admin";
-                $pasahitza = "NausicaA";
-                $datubasea = "e1webgune";
-
+                // Datu basera konektatu
+                include "CBD.php";
                  // Hauek formulariotik hartzen ditugu
                 $izena = isset($_REQUEST['user']) ? $_REQUEST['user'] : null;
                 $pasahitz = isset($_REQUEST['pass']) ? $_REQUEST['pass'] : null;
               
 
                 try {
-                    $konexioa = new PDO("mysql:host=$zerbitzaria;dbname=$datubasea", $erabiltzailea, $pasahitza);
+                    $konexioa = new PDO("mysql:host=$hostDB;dbname=$nombreDB", $usuarioDB, $contrasenyaDB);
                     // ezarri PDO exception modura
                     $konexioa->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // sql 
@@ -100,7 +94,17 @@
                     if ($pasahitzZuzena == $pasahitz) {
                         // Zuzenak badira, saioa hasiko dugu sartutako datuekin
                         session_start();
-                        $_SESSION['mail'] = $_REQUEST['mail'];
+                        $sqlemail = "SELECT mail FROM Usuarios WHERE nickname = '$izena'";
+                        $sqlrol = "SELECT rol FROM Usuarios WHERE nickname = '$izena'";
+                        $eemail = $konexioa->query($sqlemail);
+                        $demail = $eemail->fetchAll();
+                        $erol = $konexioa->query($sqlrol);
+                        $drol = $erol->fetchAll();
+                        $email = $demail[0]['mail'];
+                        $rol = $drol[0]['rol'];
+                        $_SESSION['mail']=$email;
+                        $_SESSION['rol']=$rol;
+                        $_SESSION['nickname']=$nick;
                         // Orrialde segurura bidaltzen dugu
                         header('Location: index.php');
                         die();
@@ -125,40 +129,74 @@
                 
             }
         ?>
-    	<div class="main">  	
-		<input type="checkbox" id="chk" aria-hidden="true">
+    	<div class="main">      
+        <input type="checkbox" id="chk" aria-hidden="true">
+            <div class="signup">
+                <form method="post" name="R" id="R">
+                    <label for="chk" aria-hidden="true">Registrarse</label>
+                    
+                    <!-- Email -->
+                    <div class="row">
+                        <input type="text" id="email" name="mail" pattern="\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$" placeholder="Email" required>
+                        <span class="error" id="emailError"></span>
+                    </div>
 
-			<div class="signup">
-				<form method="post" name="R" id="R" action="" onsubmit="return return()">
-					<label for="chk" aria-hidden="true">Registrarse</label>
-                    <input type="text" name="mailR" placeholder="Email" required="">
-					<input type="text" name="nicknameR" placeholder="Nickname" required="">
-					<input type="text" name="name" placeholder="Nombre" required="">
-                    <input type="text" name="surname" placeholder="Apellido" required="">
-                    <input type="text" name="age" placeholder="Edad" required="">
-					<input type="password" name="pswdr" placeholder="Contraseña" required="">
-                    <input type="password" name="pswdc" placeholder="Confirmar Contraseña" required="">
-					<p id="ERROR"></p>
-                    <button class="third" type="submit" name="register" value="Submit">Registrarse</button>
-				</form>
-			</div>
+                    <!-- Nickname -->
+                    <div class="row">
+                        <input type="text" id="nick" name="nickname" pattern="[a-zA-Z0-9]+$" placeholder="Nickname" required>
+                        <span class="error" id="nickError"></span>
+                    </div>
 
-			<div class="login">
-				<form method="post" name="L" id="L" action="">
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="user" placeholder="Nickname" autocomplete="off">
-					<input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
-					<button class="third" type="submit" name="login" value="Submit">Login</button>
-                    <button class="third" type="submit" name="inv" value="Submit">Invitado</button>
-				</form>
-			</div>
-	</div>
-    <script>
-        var return = () => {
-            return(false);
-        }
+                    <!-- Nombre -->
+                    <div class="row">
+                        <input type="text" id="name" name="name" pattern="[a-zA-Z]+$" placeholder="Nombre" required>
+                        <span class="error" id="nameError"></span>
+                    </div>
 
-        var 
+                    <!-- Apellido -->
+                    <div class="row">
+                        <input type="text" id="surname" name="surname" pattern="[a-zA-Z]+$" placeholder="Apellido" required>
+                        <span class="error" id="surnameError"></span>
+                    </div>
+
+                    <!-- Edad -->
+                    <div class="row">
+                        <input type="text" id="age" name="age" pattern="[0-9]{1,3}" placeholder="Edad" required>
+                        <span class="error" id="ageError"></span>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="row">
+                        <input type="password" id="pass" name="pswdr" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Contraseña" required>
+                        <span class="error" id="passError"></span>
+                    </div>
+
+                    <!-- Confirmar contraseña -->
+                    <div class="row">
+                        <input type="password" id="passC" name="pswdc" placeholder="Confirmar Contraseña" required>
+                    </div>
+                    <span class="error" id="passCError"></span>
+                    
+                    <!-- Boton enviar -->
+                    <button type="submit" name="register" value="Submit">Registrarse</button>
+                </form>
+            </div>
+
+            <div class="login">
+                <form method="post" name="L" id="L" action="">
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <div class="row">
+                        <input type="text" name="user" placeholder="Nickname" autocomplete="off">
+                    </div>
+                    
+                    <div class="row">
+                        <input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
+                    </div>
+                    <button type="submit" name="login" value="Submit">Login</button>
+                    <button type="submit" name="inv" value="Submit">Invitado</button>
+                </form>
+            </div>
+    </div>
     </script>
     </body>
 </html>
