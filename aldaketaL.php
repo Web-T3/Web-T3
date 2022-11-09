@@ -44,12 +44,10 @@ $datuak = $nireKonts->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Aldatu Erabiltzaileak</title>
 </head>
-
 <body>
     <form method="post">
         <p>
@@ -94,5 +92,4 @@ $datuak = $nireKonts->fetch();
         </p>
     </form>
 </body>
-
 </html>

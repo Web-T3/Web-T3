@@ -33,6 +33,7 @@ var Busqueda = () => {
   input.focus();
 }
 
+
 var BuscarLibro = () => {
   document.querySelector("#searchInput").style.visibility = "hidden";
 }

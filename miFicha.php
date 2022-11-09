@@ -26,62 +26,7 @@
 </head>
 
 <body class="body">
-    <!-- Header -->
-    <header>
-        <img src="Multimedia/logo.png" alt="Logo" class="logo">
-        <div class="rightSide">
-            <div class="dropdown">
-                <button class='fa fa-filter filtros' style="font-size:35px; color:black">
-                    <div class="dropdown-content">
-                        <h3>Iragazkiak</h3>
-                        <a href="#">Filtro1</a>
-                        <a href="#">Filtro2</a>
-                        <a href="#">Filtro3</a>
-                    </div>
-            </div>
-            </button>
-            <form class="search">
-                <input type="text" name="search" id="searchInput" placeholder="Bilatu" autocomplete="off">
-                <img src="Multimedia/lupa.png" class="lupa">
-            </form>
-            <div class="dropdown">
-                <img src="Multimedia/no-profile.jpg" alt="" class="profile">
-                <div class="dropdown-content">
-                <?php
-                        if ($_SESSION['rol'] == "invitado" || $_SESSION['rol'] == "") {
-                            if ($_SESSION['rol'] == "") {
-                                echo '<p>inv</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            } else {
-                                echo '<p>'.$_SESSION['nickname'].'</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            }
-                        } else if ($_SESSION['rol'] == "irakaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "ikaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "admin") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        }
-                    ?>
-            </div>
-        </div>
-    </header>
-
+    <?php include "header.php";?>
     <!-- Container -->
     <div class="container containerMiPerfil">
 

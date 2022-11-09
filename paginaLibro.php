@@ -1,18 +1,28 @@
 <?php
-    include 'dbcon.php';
-    // SELECT prestatu
-    session_start();
-    $miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
-    // Kontsulta exekutatu
-    $miConsulta->execute();
-    
-    $valM = isset($_COOKIE['sCookie']);
-    $valN = isset($_SESSION['nickname']);
-    $valP = isset($_SESSION['contrasenya']);
-    $valR = isset($_SESSION['rol']);
-    ?>
+// Datu basera konektatu
+include "dbcon.php";
+$titulo= isset($_REQUEST['titulo']) ? $_REQUEST['titulo'] : null;
+$nirePDO = new PDO($hostPDO, $usuarioDB, $contrasenyaDB);
+session_start();
+$valM = isset($_SESSION['mail']);
+$valN = isset($_SESSION['nickname']);
+$valP = isset($_SESSION['contrasenya']);
+$valR = isset($_SESSION['rol']);
+include "FB.php";
+// SELECT prestatu
+$nireKonts = $nirePDO->prepare('SELECT * FROM `Libros` WHERE `titulo` = :titulo;');
+// Exekutatu kontsulta
+$nireKonts->execute(
+    [
+        'titulo' => $titulo
+    ]
+);
 
-<!DOCTYPE html>
+// Erantzuna lortu
+$datuak = $nireKonts->fetch();
+
+
+?>
 <html lang="en">
 
 <head>
@@ -26,88 +36,35 @@
 </head>
 
 <body id="bodyLibro">
-    <!-- Header -->
-    <header>
-        <img src="Multimedia/logo.png" alt="Logo" class="logo">
-        <div class="rightSide">
-            <div class="dropdown">
-                <button class='fa fa-filter filtros' style="font-size:35px; color:black">
-                    <div class="dropdown-content">
-                        <h3>Iragazkiak</h3>
-                        <a href="#">Filtro1</a>
-                        <a href="#">Filtro2</a>
-                        <a href="#">Filtro3</a>
-                    </div>
-            </div>
-            </button>
-            <form class="search">
-                <input type="text" name="search" id="searchInput" placeholder="Bilatu" autocomplete="off">
-                <img src="Multimedia/lupa.png" class="lupa">
-            </form>
-            <div class="dropdown">
-                <img src="Multimedia/no-profile.jpg" alt="" class="profile">
-                <div class="dropdown-content">
-                <?php
-                        if ($_SESSION['rol'] == "invitado" || $_SESSION['rol'] == "") {
-                            if ($_SESSION['rol'] == "") {
-                                echo '<p>inv</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            } else {
-                                echo '<p>'.$_SESSION['nickname'].'</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            }
-                        } else if ($_SESSION['rol'] == "irakaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "ikaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "admin") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include "header.php";?>
     <!-- Container -->
     <div class="container containerLibro">
 
 
-        <img class="imgLibroPagina" src="/Multimedia/Libros/El_diario_de_greg.jpg" alt="">
+        <img class="imgLibroPagina" src="data:<?php echo $datuak['tipo']?>;base64,<?php echo base64_encode($datuak['imagen']);?>">
 
-        <h1 class="tituloLibroPagina">El Diario de Greg</h1>
-        <p class="sinopsisLibroPagina">Greg Heffley es casi adolescente, está en el instituto y tiene un amigo, un
-            auténtico cretino llamado Rowley Jefferson, y aunque Greg quiera conseguir una novia o parecer guay su amigo
-            siempre se lo fastidia. Greg dice que este no es un típico diario, simplemente sus memorias. Tenía un
-            hermano mayor llamado Rodrick, muy pesado y siempre le quería hacer la vida imposible a Greg y para rematar
-            un hermanito pequeño de lo más mimado y ese se llamaba Manny. En el instituto había una maldición sobre un
-            queso; quien lo tocara, tendría “la maldición del queso”. Greg y Rowley en Halloween molestaron a unos
-            adolescentes. Pasado un tiempo Greg y Rowley se estaban “peleando”, los chicos mayores los pillaron y a
-            Rowley le hicieron tragarse la loncha del queso maldito. Al día siguiente la gente se enteró de que el queso
-            no estaba allí y por deducciones casi culpaban a Rowley pero Greg, le defendió de “la maldición” y al final
-            se reconciliaron. Desde entonces, en el instituto le tenían mucho asco.</p>
+        <h1 class="tituloLibroPagina"><?php $titulo = explode(",",$datuak['titulo']); echo $titulo[0];?></h1>
+        <p class="sinopsisLibroPagina"><?= $datuak['sinopsis'] ?></p>
 
         <div class="notaLibroPagina">
             <p class="notaPagina">4/5</p>
         </div>
 
-        <div class="comentarios"></div>
-
-
+        <div class="comentarios">
+        <form action=" " id="frmComment" method="post">
+        <div class="row">
+            <label> Nombre: </label> <span id="name-info"></span><h1 class="form-field" id="name" type="text" name="user"></h1>
+        </div>
+        <div class="row">
+            <label for="mesg"> Mensaje : <span id="message-info"></span></label>
+            <textarea class="form-field" id="message" name="message" rows="4"></textarea>   
+        </div>
+        <div class="row">
+            <input type="hidden" name="add" value="post" />
+            <button type="submit" name="submit" id="submit" class="btn-add-comment">Añadir Comentario</button>
+        </div>
+        </form>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -131,5 +88,4 @@
 
     </footer>
 </body>
-
 </html>

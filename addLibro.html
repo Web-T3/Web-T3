@@ -1,17 +1,3 @@
-<?php
-    include 'dbcon.php';
-    // SELECT prestatu
-    session_start();
-    $miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
-    // Kontsulta exekutatu
-    $miConsulta->execute();
-    
-    $valM = isset($_COOKIE['sCookie']);
-    $valN = isset($_SESSION['nickname']);
-    $valP = isset($_SESSION['contrasenya']);
-    $valR = isset($_SESSION['rol']);
-    ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,37 +29,12 @@
             <div class="dropdown">
                 <img src="Multimedia/no-profile.jpg" alt="" class="profile">
                 <div class="dropdown-content">
-                <?php
-                        if ($_SESSION['rol'] == "invitado" || $_SESSION['rol'] == "") {
-                            if ($_SESSION['rol'] == "") {
-                                echo '<p>inv</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            } else {
-                                echo '<p>'.$_SESSION['nickname'].'</p>';
-                                echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
-                            }
-                        } else if ($_SESSION['rol'] == "irakaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "ikaslea") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        } else if ($_SESSION['rol'] == "admin") {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="addLibro.php">Bidali liburu berria</a>';
-                            echo '<a href="miFicha.php">Zure fitxa</a>';
-                            echo '<a href="miPerfil.php">Profila</a>';
-                            echo '<a href="admin.html">Admin</a>';
-                            echo '<a href="LoginAO1C.php">Saioa itxi</a>';
-                        }
-                    ?>
+                    <p>Nickname</p>
+                    <a href="addLibro.html">Añadir Libro</a>
+                    <a href="miFicha.html">Mi Ficha</a>
+                    <a href="miPerfil.html">Perfil</a>
+                    <a href="admin.html">Admin</a>
+                    <a href="#">Cerrar Sesion</a>
                 </div>
             </div>
         </div>
@@ -85,7 +46,7 @@
         <h1>Añadir un nuevo libro</h1>
 
         <!-- Formulario  -->
-        <form action="addLibroF.php" method="post" enctype="multipart/form-data">
+        <form action="addLibro.php" method="post" enctype="multipart/form-data">
 
             <!-- Titulo -->
             <div>
@@ -164,7 +125,7 @@
             </div>
 
             <!-- Boton enviar -->
-            <button type="submit" name="addL" value="submit">Bidali</button>
+            <button type="submit" name="addL" value="submit">Enviar</button>
 
         </form>
 
