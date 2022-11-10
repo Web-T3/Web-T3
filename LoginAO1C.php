@@ -35,7 +35,7 @@
             if($pass == $passc){
           
             // Preparatu INSERT
-            $miInsert = $nirePDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`, `lib_leido`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo)');
+            $miInsert = $nirePDO->prepare('INSERT INTO `Usuarios` (`mail`, `nickname`, `nombre`, `apellido`, `contrasenya`, `edad`, `rol`, `grupo`) VALUES (:mail, :nickname, :nombre, :apellido, :contrasenya, :edad, :rol, :grupo)');
             // Exekutatu INSERT datuekin
             $miInsert->execute(
             array(
@@ -52,6 +52,11 @@
             $datuak = $miInsert->fetch();
             // Zuzenak badira, saioa hasiko dugu sartutako datuekin
             session_start();
+            $_SESSION['nickname'] = $_REQUEST['nickname'];
+            $_SESSION['nombre'] = $_REQUEST['name'];
+            $_SESSION['apellido'] = $_REQUEST['apellido'];
+            $_SESSION['edad'] = $_REQUEST['edad'];
+            $_SESSION['rol'] = $rol;
             $_SESSION['mail'] = $_REQUEST['mail'];
             $email = $_SESSION['mail'];
             // Orrialde segurura bidaltzen dugu
@@ -67,7 +72,7 @@
             if (isset($_POST['login'])) { //egiaztatzen dugu datuak jaso ditugula
 
                 // Datu basera konektatu
-                include "CBD.php";
+                include "dbcon.php";
                  // Hauek formulariotik hartzen ditugu
                 $nick = isset($_REQUEST['user']) ? $_REQUEST['user'] : null;
                 $pasahitz = isset($_REQUEST['pass']) ? $_REQUEST['pass'] : null;
