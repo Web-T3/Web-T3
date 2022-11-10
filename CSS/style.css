@@ -215,7 +215,7 @@ form>div>label {
     transition: .5s;
 }
 
-a {
+#bodyAdmin a {
     font-weight: bold;
     font-size: 200%;
     text-align: center;
@@ -430,14 +430,14 @@ a {
     }
 
     .libro:hover {
-        width: 25vh;
-        height: 45vh;
+        width: 18vh;
+        height: 38vh;
         transition: 1s;
     }
 
     .libro:not(:hover) {
-        width: 25vh;
-        height: 37vh;
+        width: 18vh;
+        height: 35vh;
         transition: .5s;
     }
 
@@ -447,7 +447,7 @@ a {
         align-items: center;
         width: 180px;
         height: 250px;
-        background-color: green;
+
     }
 
     .imgLibro:hover {
@@ -530,7 +530,7 @@ a {
     }
 
     .comentarios {
-        background-color: lightgrey;
+        background-color: var(--main-color);
     }
 
     /* Pagina Mi Ficha */

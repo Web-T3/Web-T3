@@ -44,8 +44,8 @@
                             echo '<p>inv</p>';
                             echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
                         } else {
-                            echo '<p>'.$_SESSION['nickname'].'</p>';
-                            echo '<a href="LoginAO1C.php">Erregistratu edo saioa hasi</a>';
+                            echo '<a>'.$_SESSION['nickname'].'</a>';
+                            echo '<p href="LoginAO1C.php">Erregistratu edo saioa hasi</p>';
                         }
                     } else if ($_SESSION['rol'] == "irakaslea") {
                         echo '<p>'.$_SESSION['nickname'].'</p>';

@@ -11,12 +11,11 @@
     $valP = isset($_SESSION['contrasenya']);
     $valR = isset($_SESSION['rol']);
     if ($_SERVER["REQUEST_METHOD"]!="POST"){ 
-        $miConsulta = $miPDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
+        $miConsulta = $nirePDO->prepare('SELECT * FROM Libros WHERE estado = "Aprobado";');
         // Kontsulta exekutatu
         $miConsulta->execute();
     }
-    include "FB.php";    
-    ?>
+    include "FB.php";
 
 ?>
 <html lang="en">
@@ -38,7 +37,7 @@
     <div class="container containerIndex">
         <?php foreach ($miConsulta as $clave => $valor): ?>
         <div class="libro">
-            <a href="libros.php?titulo=<?= $valor['titulo'] ?>"><img class="imgLibro" src="data:<?php echo $valor['tipo']?>;base64,<?php echo base64_encode($valor['imagen']);?>"></img></a>
+            <a href="paginaLibro.php?titulo=<?= $valor['titulo'] ?>"><img class="imgLibro" src="data:<?php echo $valor['tipo']?>;base64,<?php echo base64_encode($valor['imagen']);?>"></img></a>
 
             <a class="tituloLibro" href="libros.php?titulo=<?= $valor['titulo'] ?>">
                 <?php 

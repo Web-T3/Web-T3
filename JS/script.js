@@ -14,17 +14,17 @@ function CargaEventos() {
   const FORMSEARCH = document.querySelector(".search");
   FORMSEARCH.addEventListener("submit", BuscarLibro);
 
-  // Imagen cuando esta el mouse encima
-  const IMG = document.querySelector(".libro");
-  IMG.addEventListener("mouseover", ImgHover);
+  // // Imagen cuando esta el mouse encima
+  // const IMG = document.querySelector(".libro");
+  // IMG.addEventListener("mouseover", ImgHover);
   
-  // Imagen vuelta a lo normal
-  IMG.addEventListener("mouseout", ImgNormal);
+  // // Imagen vuelta a lo normal
+  // IMG.addEventListener("mouseout", ImgNormal);
 
 }
 
 var Index = () => {
-  location.href = "../index.php"
+  location.href = "index.php"
 }
 
 var Busqueda = () => {
@@ -38,16 +38,16 @@ var BuscarLibro = () => {
   document.querySelector("#searchInput").style.visibility = "hidden";
 }
 
-var ImgHover = () => {
-  const TITULOLIBRO = document.querySelector(".tituloLibro");
+// var ImgHover = () => {
+//   const TITULOLIBRO = document.querySelector(".tituloLibro");
 
-  TITULOLIBRO.style.visibility = "hidden";
-  SINOPSISHOVER.innerHTML = "";
-}
+//   TITULOLIBRO.style.visibility = "hidden";
+//   SINOPSISHOVER.innerHTML = "";
+// }
 
-var ImgNormal = () => {
-  const TITULOLIBRO = document.querySelector(".tituloLibro");
+// var ImgNormal = () => {
+//   const TITULOLIBRO = document.querySelector(".tituloLibro");
 
-  TITULOLIBRO.style.visibility = "visible";
-  SINOPSISHOVER.innerHTML = "";
-}
+//   TITULOLIBRO.style.visibility = "visible";
+//   SINOPSISHOVER.innerHTML = "";
+// }
