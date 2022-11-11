@@ -1450,7 +1450,6 @@ form>div>label {
         align-self: center;
         width: 90%;
         height: 80%;
-        background-color: green;
     }
 
     .imgLibro:hover {
@@ -1465,7 +1464,6 @@ form>div>label {
         align-items: center;
         width: 100%;
         height: 20%;
-        background-color: grey;
     }
 
     /* Pagina Libro */

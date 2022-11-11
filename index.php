@@ -39,7 +39,7 @@
         <div class="libro">
             <a href="paginaLibro.php?titulo=<?= $valor['titulo'] ?>"><img class="imgLibro" src="data:<?php echo $valor['tipo']?>;base64,<?php echo base64_encode($valor['imagen']);?>"></img></a>
 
-            <a class="tituloLibro" href="libros.php?titulo=<?= $valor['titulo'] ?>">
+            <a class="tituloLibro" href="paginaLibro.php?titulo=<?= $valor['titulo'] ?>">
                 <?php 
                 $titulo = explode(",",$valor['titulo']);
                 echo $titulo[0];
