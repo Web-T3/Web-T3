@@ -3,7 +3,7 @@
     // SELECT prestatu
     session_start();
     //Balidazioak
-    $valM = isset($_COOKIE['sCookie']);
+    $valM = isset($_SESSION['mail']);
     $valN = isset($_SESSION['nickname']);
     $valP = isset($_SESSION['contrasenya']);
     $valR = isset($_SESSION['rol']);

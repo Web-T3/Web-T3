@@ -6,7 +6,7 @@
     // Kontsulta exekutatu
     $miConsulta->execute();
     
-    $valM = isset($_COOKIE['sCookie']);
+    $valM = isset($_SESSION['mail']);
     $valN = isset($_SESSION['nickname']);
     $valP = isset($_SESSION['contrasenya']);
     $valR = isset($_SESSION['rol']);
@@ -33,34 +33,34 @@
     <!-- Container -->
     <div class="container containerAddLibro">
 
-        <h1>Añadir un nuevo libro</h1>
+        <h1>Liburu bat gehitu</h1>
 
         <!-- Formulario  -->
         <form action="addLibroF.php" method="post" enctype="multipart/form-data">
 
             <!-- Titulo -->
             <div>
-                <label for="titulo">Titulo</label>
-                <input type="text" name="titulo" placeholder="Mete titulo en cada idioma.">
+                <label for="titulo">Titulua</label>
+                <input type="text" name="titulo" placeholder="Sartu ezazu titulua.">
             </div>
 
             <!-- Nombre del autor -->
             <div>
-                <label for="escritor">Escritor</label>
-                <input type="text" name="escritor" placeholder="Mete escritor/es.">
+                <label for="escritor">Idazlea</label>
+                <input type="text" name="escritor" placeholder="Sartu idazle/ak.">
             </div>
 
             <!-- Sinopsis -->
             <div>
-                <label for="sinopsis">Sinopsis</label>
-                <textarea name="sinopsis" id="sinopsis" cols="30" rows="10" placeholder="Mete una sinopsis breve."
+                <label for="sinopsis">Sinopsia</label>
+                <textarea name="sinopsis" id="sinopsis" cols="30" rows="10" placeholder="MSartu ezazu sinopsia."
                     style="resize: none"></textarea>
             </div>
 
             <!-- Idiomas -->
             <div>
-                <label for="idioma">Idiomas</label>
-                <input type="text" name="idioma" placeholder="Mete los idiomas.">
+                <label for="idioma">Hizkuntzak</label>
+                <input type="text" name="idioma" placeholder="Sartu hizkuntzak.">
             </div>
 
             <!-- Formato -->

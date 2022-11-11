@@ -150,7 +150,7 @@
         <input type="checkbox" id="chk" aria-hidden="true">
             <div class="signup">
                 <form method="post" name="R" id="R">
-                    <label for="chk" aria-hidden="true">Registrarse</label>
+                    <label for="chk" aria-hidden="true">Register</label>
                     
                     <!-- Email -->
                     <div class="row">
@@ -166,36 +166,36 @@
 
                     <!-- Nombre -->
                     <div class="row">
-                        <input type="text" id="name" name="name" pattern="[a-zA-Z]+$" placeholder="Nombre" required>
+                        <input type="text" id="name" name="name" pattern="[a-zA-Z]+$" placeholder="Izena" required>
                         <span class="error" id="nameError"></span>
                     </div>
 
                     <!-- Apellido -->
                     <div class="row">
-                        <input type="text" id="surname" name="surname" pattern="[a-zA-Z]+$" placeholder="Apellido" required>
+                        <input type="text" id="surname" name="surname" pattern="[a-zA-Z]+$" placeholder="Abizena" required>
                         <span class="error" id="surnameError"></span>
                     </div>
 
                     <!-- Edad -->
                     <div class="row">
-                        <input type="text" id="age" name="age" pattern="[0-9]{1,3}" placeholder="Edad" required>
+                        <input type="text" id="age" name="age" pattern="[0-9]{1,3}" placeholder="Adina" required>
                         <span class="error" id="ageError"></span>
                     </div>
 
                     <!-- Contraseña -->
                     <div class="row">
-                        <input type="password" id="pass" name="pswdr" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Contraseña" required>
+                        <input type="password" id="pass" name="pswdr" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Pasahitza" required>
                         <span class="error" id="passError"></span>
                     </div>
 
                     <!-- Confirmar contraseña -->
                     <div class="row">
-                        <input type="password" id="passC" name="pswdc" placeholder="Confirmar Contraseña" required>
+                        <input type="password" id="passC" name="pswdc" placeholder="Berriro pasahitza" required>
                     </div>
                     <span class="error" id="passCError"></span>
                     
                     <!-- Boton enviar -->
-                    <button type="submit" name="register" value="Submit">Registrarse</button>
+                    <button type="submit" name="register" value="Submit">Register</button>
                 </form>
             </div>
 
@@ -207,10 +207,10 @@
                     </div>
                     
                     <div class="row">
-                        <input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
+                        <input type="password" name="pass" placeholder="Pasahitza" autocomplete="off">
                     </div>
                     <button type="submit" name="login" value="Submit">Login</button>
-                    <button type="submit" name="inv" value="Submit">Invitado</button>
+                    <button type="submit" name="inv" value="Submit">Gonbidatua</button>
                 </form>
             </div>
     </div>
