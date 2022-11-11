@@ -1426,7 +1426,7 @@ form>div>label {
         width: 17vh;
         height: 25vh;
         justify-self: center;
-        background-color: var(--second-color);
+        /* background-color: var(--second-color); */
     }
 
     .libro:hover {
@@ -1439,7 +1439,7 @@ form>div>label {
         width: 17vh;
         height: 25vh;
         transition: .5s;
-        background-color: var(--second-color);
+        /* background-color: var(--second-color); */
 
     }
 
